@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Comparativa</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="author" content="Jorge Martínez">
+		<meta name="keywords" content="BIOS, UEFI, ROM, curiosidades">
+		<meta name="description" content="Comparativa entre BIOS">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="images/star.ico" type="image/x-icon">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/star.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/star.ico">
+    </head>
+
+    <body>
+        <header>
+            <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer">
+                <picture>
+                    <source srcset="images/star.png" type="image/png">
+                    <img src="images/star.png" alt="Logo Energy Star" width="80">
+                </picture>
+            </a>
+            <span id="titulo">Comparativa</span>
+        </header>
+            <nav class="nav1">
+                <a href="index.html">Inicio</a>
+                <a href="1_hist.html">Historia</a>
+                <a href="2_evo.html">Evolución</a>
+                <a href="3_curio.html">Curiosidades</a>
+                <a href="4_comp.html"><strong>COMPARATIVA</strong></a>
+                <a href="5_sus.html">Suscripción</a>
+        </nav>
+
+
+        <aside class="aside1">
+            <h4>Recursos</h4>
+            <ul>
+                <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer">Wikipedia: BIOS</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener noreferrer">Wikipedia: UEFI (EN)</a></li>
+                <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer">UEFI Forum</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main">
+            <h2>Tabla comparativa centrada en la evolución y capacidades de distintos firmwares.</h2>
+            <div class="table-wrapper">
+                <table class="comp-table">
+                    <!--"border-collapse:collapse" parece imitar el espaciado entre celdas, como lo haría el obsoleto "border=1"-->
+                    <caption>Firmwares: Legacy, UEFI y alternativas (implementaciones y proyectos)</caption>
+                    <thead>
+                        <tr>
+                            <!--Uso de "scope" indica a qué celdas se aplica el encabezado th. Parece una buena práctica de cara a la accesibilidad, aunque aún no comprendo del todo su funcionamiento. Entiendo que, en mi código, lo estoy aplicando a la columna completa, y un lector de pantalla las identificaría como algo que hay que leer primero-->
+                            <th scope="col">Sistema / Proyecto</th>
+                            <th scope="col">Aparición (aprox.)</th>
+                            <th scope="col">Tipo / Arquitectura</th>
+                            <th scope="col">Soporte GPT / discos &gt;2 TB</th>
+                            <th scope="col">Secure Boot</th>
+                            <th scope="col">Interfaz</th>
+                            <th scope="col">Ventajas</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="princ-col">BIOS (PC BIOS)</td>
+                            <td>Principios de los 80</td>
+                            <td>Monolítico, modo real</td>
+                            <td>No (MBR)</td>
+                            <td>No</td>
+                            <td>Setup textual simple</td>
+                            <td>Compatibilidad histórica</td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">Firmwares de proveedores (AMI / Award / Phoenix)</td>
+                            <td>1980s–2000s</td>
+                            <td>Derivados del BIOS clásico</td>
+                            <td>Limitado (depende de actualizaciones)</td>
+                            <td>Varía según versión (antes no)</td>
+                            <td>Setup tradicional; menús según fabricante</td>
+                            <td>Amplia compatibilidad con hardware x86</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="7" class="spacing-row"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">UEFI (estándar)</td>
+                            <td>Mediados 2000s (estandarizado)</td>
+                            <td>Modular, 32/64-bit, drivers en firmware</td>
+                            <td>Sí (GPT nativo)</td>
+                            <td>Sí (Secure Boot opcional)</td>
+                            <td>Shell, posibilidad GUI, menús avanzados</td>
+                            <td>Mejor soporte hardware y seguridad</td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">TianoCore / OVMF (implementación UEFI libre)</td>
+                            <td>2006 en adelante (proyecto EDK II)</td>
+                            <td>Implementación open-source de UEFI</td>
+                            <td>Sí (cuando se usa OVMF)</td>
+                            <td>Sí (depende de configuración)</td>
+                            <td>Interfaz UEFI estándar; integrable en VMs</td>
+                            <td>Permite UEFI en entornos abiertos (QEMU/OVMF)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">coreboot + UEFI payload (p. ej. Tianocore payload)</td>
+                            <td>2010s</td>
+                            <td>coreboot + payload UEFI</td>
+                            <td>Sí (si el payload UEFI soporta GPT)</td>
+                            <td>Sí (según payload)</td>
+                            <td>Puede ofrecer UEFI completo</td>
+                            <td>Mezcla rendimiento con capacidades UEFI</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="7" class="spacing-row"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">SeaBIOS</td>
+                            <td>2000s</td>
+                            <td>BIOS de reemplazo (open-source)</td>
+                            <td>Limitado (MBR por diseño, algunas extensiones)</td>
+                            <td>No por defecto</td>
+                            <td>Interfaz BIOS tradicional</td>
+                            <td>Proyecto libre para compatibilidad legacy</td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">Libreboot</td>
+                            <td>2010s (forks y proyectos relacionados)</td>
+                            <td>Firmware libre; fork de coreboot sin blobs propietarios</td>
+                            <td>Depende del payload</td>
+                            <td>Depende</td>
+                            <td>Generalmente textual; depende del payload</td>
+                            <td>Firmware completamente libre (evita blobs propietarios)</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="7" class="spacing-row"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">Open Firmware (IEEE 1275)</td>
+                            <td>Finales 80 / 90 (Sun, IBM, Apple en PowerPC)</td>
+                            <td>Forth-based, usado en sistemas RISC/Power</td>
+                            <td>Depende de la implementación</td>
+                            <td>Depende</td>
+                            <td>Interfaz basada en comandos (Forth)</td>
+                            <td>Estándar para estaciones de trabajo RISC</td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">OpenBIOS</td>
+                            <td>2000s (implementación libre de Open Firmware)</td>
+                            <td>Implementación de Open Firmware (open-source)</td>
+                            <td>Depende</td>
+                            <td>Depende</td>
+                            <td>Interfaz tipo Open Firmware</td>
+                            <td>Alternativa libre para plataformas que usaban OF</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="7" class="spacing-row"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">Intel FSP (Firmware Support Package)</td>
+                            <td>2010s (componente moderno)</td>
+                            <td>Componente binario para inicialización SoC</td>
+                            <td>No es un firmware completo (complementa)</td>
+                            <td>No (es componente)</td>
+                            <td>No aplica (trabaja bajo firmware principal)</td>
+                            <td>Permite a vendors delegar inicialización del hardware</td>
+                        </tr>
+
+                        <tr>
+                            <td class="princ-col">Firmware de máquinas virtuales (p. ej. SeaBIOS en QEMU)</td>
+                            <td>2000s–presente</td>
+                            <td>Implementaciones para entornos virtuales</td>
+                            <td>Depende (SeaBIOS u OVMF)</td>
+                            <td>Depende</td>
+                            <td>Integrado en hypervisors; fácil de actualizar</td>
+                            <td>Flexibilidad para testing y despliegue en VMs</td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="7" class="table-foot">Nota: "Depende" indica que la capacidad varía según la configuración, versión o payload (por ejemplo, coreboot puede usar SeaBIOS o un payload UEFI).</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </main>  
+        
+        <br><br><br>
+        <footer>©2026 Jorge Martínez</footer>
+    </body>
+</html>

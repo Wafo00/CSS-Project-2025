@@ -1,3 +1,8 @@
+/* evito sumar anchos al 100% especificado */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 :root {
     --bg-page: #e9e9e9;
     --text-main: #1e293b;
@@ -169,8 +174,13 @@ footer {
     color: var(--text-nav-fixed);
 }
 
-.nav1 a:active {
-    transform: translateY(0);
+.nav1 a:active { /* añadiendo la clase .active controlo la respuesta de ese botón según la página, y facilito que se vea mejor en móviles*/
+    background-color: var(--bg-nav-hover);
+    border-color: var(--bg-nav-hover);
+}
+
+.nav1 a:focus-visible { /* mejora la accesibilidad para usuarios de teclado */
+    box-shadow: 0 0 0 2px #ffffff inset;
 }
 
 @media (prefers-color-scheme: dark) { /* ajustes para tablas en modo oscuro */
@@ -365,6 +375,7 @@ legend {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto auto auto;
         gap: 15px;
+        width: 100%; /* me aseguro de que en pantalla pequeña no haga falta hacer zoom "hacia atrás" innecesario */
     }
 
     .nav1 {
@@ -389,6 +400,10 @@ legend {
     .nav1 a {
         flex: 0 0 auto;
         white-space: nowrap;
+    }
+
+    .nav1 a.active { /* resalto el botón activo aún más en móviles, pero no en pantallas grandes */
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4) inset; /* comencé usando outline pero, al no formar parte del box model, no se adaptaba bien al tamaño del botón */
     }
     
     .aside1 {

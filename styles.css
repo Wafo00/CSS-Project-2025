@@ -1,14 +1,22 @@
-/* evito sumar anchos al 100% especificado */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 :root {
     --bg-page: #e9e9e9;
     --text-main: #1e293b;
     --bg-nav-fixed: #182d55;
     --text-nav-fixed: #FFFFFF;
-    --bg-nav-hover: #1e40af; 
+    --bg-nav-hover: #1e40af;
+    --focus-inset-light: rgba(255, 255, 255, 0.4); /* para un box-shadow de foco en pantallas pequeñas, usado más adelante */
+    --border-table: #000;
+} /* uso "fixed" para indicar que ha habido varios intentos previos, y para diferenciarlo de los futuros cambios */
+
+/* evito sumar anchos al 100% especificado */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Evita scroll horizontal indeseado en móvil */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* enlaces en general */
@@ -17,18 +25,10 @@ a:visited { color: purple; }
 a:hover, a:focus { color: red; }
 a:active { color: green; }
 
-
-@media (prefers-color-scheme: dark) { /* modo oscuro */
-  :root {
-    --bg-page: #070b14;
-    --text-main: #f8fafc;
-  }
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+/* pequeña excepción (más especificidad) para que los enlaces de nav no cambien de color, dando aspecto de botón real, y no simples enlaces */
+.nav1 a:link,
+.nav1 a:visited {
+    color: var(--text-nav-fixed);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,15 +38,17 @@ ul {
     a:active { color: green; }
 }
 
-header {
-    grid-column: 1 / 4;
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (prefers-color-scheme: dark) { /* modo oscuro */
+  :root {
+    --bg-page: #070b14;
+    --text-main: #f8fafc;
+  }
 }
 
 body {
@@ -67,6 +69,17 @@ body {
     overflow-x: hidden;
 }
 
+header {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
 #titulo {
     font-size: 2em;
     font-weight: bold;
@@ -75,12 +88,66 @@ body {
     transition: color 0.3s ease; /* todo transicionaba correctamente menos esto */
 }
 
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.95em;
+    font-weight: bold;
+    text-decoration: none;
+
+    border: 2px solid var(--bg-nav-fixed);
+    background-color: var(--bg-nav-fixed);
+    color: var(--text-nav-fixed);
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--bg-nav-hover);
+    border-color: var(--bg-nav-hover);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--focus-inset-light) inset;
+}
+
 .nav1 {
     grid-column: 1;
     grid-row: 2;
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.nav1 a {
+    display: block;
+    text-decoration: none;
+}
+
+.nav1 a.active { /* añadiendo la clase .active controlo la respuesta de ese botón según la página, y facilito que se vea mejor en móviles*/
+    background-color: var(--bg-nav-hover);
+    border-color: var(--bg-nav-hover);
+}
+
+.nav1 a:focus-visible { /* mejora la accesibilidad para usuarios de teclado */
+    box-shadow: 0 0 0 2px #ffffff inset;
 }
 
 main {
@@ -153,102 +220,6 @@ footer {
     font-size: 0.9em;
 }
 
-input[type="submit"],
-input[type="reset"] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 10px 20px;
-    font-size: 0.95em;
-    font-weight: bold;
-
-    border-radius: 8px;
-    border: 2px solid var(--bg-nav-fixed);
-    background-color: var(--bg-nav-fixed);
-    color: var(--text-nav-fixed);
-
-    cursor: pointer;
-    white-space: nowrap;
-
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 10px 20px;
-    border-radius: 8px;
-
-    font-family: inherit;
-    font-size: 0.95em;
-    font-weight: bold;
-    text-decoration: none;
-
-    border: 2px solid var(--bg-nav-fixed);
-    background-color: var(--bg-nav-fixed);
-    color: var(--text-nav-fixed);
-
-    cursor: pointer;
-    white-space: nowrap;
-
-    transition: background-color 0.3s ease,
-                border-color 0.3s ease,
-                transform 0.3s ease,
-                box-shadow 0.2s ease;
-}
-
-.nav1 a {
-    display: block;
-    text-decoration: none;
-
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-
-    background-color: var(--bg-nav-fixed);
-    color: var(--text-nav-fixed);
-
-    border: 2px solid var(--bg-nav-fixed);
-
-    transition: background-color 0.3s ease,
-                border-color 0.3s ease,
-                transform 0.3s ease;
-}
-
-.nav1 a:hover, 
-.nav1 a:focus {
-    background-color: var(--bg-nav-hover);
-    border-color: var(--bg-nav-hover);
-    transform: translateY(-2px);
-    color: var(--text-nav-fixed);
-}
-
-.nav1 a:active { /* añadiendo la clase .active controlo la respuesta de ese botón según la página, y facilito que se vea mejor en móviles*/
-    background-color: var(--bg-nav-hover);
-    border-color: var(--bg-nav-hover);
-}
-
-.nav1 a:focus-visible { /* mejora la accesibilidad para usuarios de teclado */
-    box-shadow: 0 0 0 2px #ffffff inset;
-}
-
-@media (prefers-color-scheme: dark) { /* ajustes para tablas en modo oscuro */
-    .comp-table {
-        border-color: #ccc;
-    }
-    .comp-table th, 
-    .comp-table td {
-        border-color: #ccc;
-    }
-    .comp-table thead th,
-    .comp-table .princ-col {
-        background-color: #1e293b;
-    }
-}
-
 /* estilos para el desbordamiento de tablas */
 .table-wrapper {
     width: 100%;
@@ -264,14 +235,15 @@ input[type="reset"] {
     border-radius: 4px; 
 }
 
+/* estilos de tablas */
 .comp-table {
     width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #000;
+    border-collapse: separate;
+    border-spacing: 0 1px;
+    border: 1px solid var(--border-table);
     font-size: 0.95em;
 }
 
-/* estilos de tablas */
 .comp-table caption {
     caption-side: top;
     font-weight: bold;
@@ -282,8 +254,11 @@ input[type="reset"] {
 .comp-table th, 
 .comp-table td {
     padding: 10px 8px;
-    border: 1px solid #000;
+    border: 1px solid var(--border-table);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25),
+
     vertical-align: top;
+    text-align: left;
 }
 
 .comp-table thead th {
@@ -295,6 +270,7 @@ input[type="reset"] {
     font-weight: bold;
     color: black;
 }
+
 .comp-table .princ-col {
     font-size: 0.85em;
     background-color: lightgrey;
@@ -318,6 +294,25 @@ input[type="reset"] {
     font-size: 0.9em;
 }
 
+@media (prefers-color-scheme: dark) { /* ajustes para tablas en modo oscuro */
+    :root {
+    --border-table: #ccc;
+    }
+    .comp-table {
+        border: 1px solid var(--border-table);
+    }
+    .comp-table th, 
+    .comp-table td {
+        border: 1px solid var(--border-table);
+        box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.15);
+    }
+    .comp-table thead th,
+    .comp-table .princ-col {
+        background-color: #1e293b;
+        color:var(--text-nav-fixed);
+    }
+}
+
 /* estilos para formularios */
 form {
     max-width: 600px;
@@ -335,7 +330,6 @@ textarea {
     font-size: 1em;
     border: 1px solid #999;
     border-radius: 6px;
-    box-sizing: border-box;
 }
 
 input[type="checkbox"],
@@ -345,25 +339,7 @@ input[type="radio"] {
 
 input[type="submit"],
 input[type="reset"] {
-    padding: 12px 20px;
-    font-size: 1em;
-    border-radius: 8px;
-    border: 2px solid var(--bg-nav-fixed);
-    background-color: var(--bg-nav-fixed);
-    color: var(--text-nav-fixed);
-    cursor: pointer;
     margin-right: 10px;
-}
-
-input[type="reset"] {
-    background-color: transparent;
-    color: var(--bg-nav-fixed);
-}
-
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-    background-color: var(--bg-nav-hover);
-    color: white;
 }
 
 .consent-text {
@@ -384,13 +360,6 @@ input[type="reset"]:hover {
     textarea::placeholder {
         color: #94a3b8;              /* placeholder suave */
         opacity: 1;                  /* importante en Firefox */
-    }
-
-    input[type="submit"],
-    input[type="reset"] {
-        background-color: #1e40af;
-        border-color: #1e40af;
-        color: #ffffff;
     }
 }
 
@@ -474,7 +443,7 @@ legend {
     }
 
     .nav1 a.active { /* resalto el botón activo aún más en móviles, pero no en pantallas grandes */
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4) inset; /* comencé usando outline pero, al no formar parte del box model, no se adaptaba bien al tamaño del botón */
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4) inset; /* comencé usando outline pero, al no formar parte del box model, no se adaptaba bien al tamaño del botón */
     }
     
     .aside1 {

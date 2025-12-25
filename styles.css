@@ -153,17 +153,69 @@ footer {
     font-size: 0.9em;
 }
 
-.nav1 a:link, 
-.nav1 a:visited {
+input[type="submit"],
+input[type="reset"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+    font-size: 0.95em;
+    font-weight: bold;
+
+    border-radius: 8px;
+    border: 2px solid var(--bg-nav-fixed);
+    background-color: var(--bg-nav-fixed);
+    color: var(--text-nav-fixed);
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.95em;
+    font-weight: bold;
+    text-decoration: none;
+
+    border: 2px solid var(--bg-nav-fixed);
+    background-color: var(--bg-nav-fixed);
+    color: var(--text-nav-fixed);
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.2s ease;
+}
+
+.nav1 a {
     display: block;
     text-decoration: none;
+
     padding: 10px 20px;
     border-radius: 8px;
     font-weight: bold;
+
     background-color: var(--bg-nav-fixed);
     color: var(--text-nav-fixed);
+
     border: 2px solid var(--bg-nav-fixed);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease;
 }
 
 .nav1 a:hover, 
@@ -314,7 +366,26 @@ input[type="reset"]:hover {
     color: white;
 }
 
+.consent-text {
+    font-weight: normal;
+}
+
 @media (prefers-color-scheme: dark) {
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+        background-color: #0f172a;   /* azul muy oscuro */
+        color: #f8fafc;              /* texto claro */
+        border-color: #334155;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #94a3b8;              /* placeholder suave */
+        opacity: 1;                  /* importante en Firefox */
+    }
+
     input[type="submit"],
     input[type="reset"] {
         background-color: #1e40af;

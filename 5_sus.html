@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Suscripción</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="author" content="Jorge Martínez">
+		<meta name="keywords" content="BIOS, UEFI, ROM, curiosidades, suscripción, newsletter">
+		<meta name="description" content="Suscripción a la newsletter sobre BIOS">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="images/star.ico" type="image/x-icon">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/star.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/star.ico">
+    </head>
+
+    <body>
+        <header>
+            <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer">
+                <picture>
+                    <source srcset="images/star.png" type="image/png">
+                    <img src="images/star.png" alt="Logo Energy Star" width="80">
+                </picture>
+            </a>
+            <span id="titulo">Suscripción</span>
+        </header>
+            <nav class="nav1">
+                <a href="index.html">Inicio</a>
+                <a href="1_hist.html">Historia</a>
+                <a href="2_evo.html">Evolución</a>
+                <a href="3_curio.html">Curiosidades</a>
+                <a href="4_comp.html">Comparativa</a>
+                <a href="5_sus.html"><strong>SUSCRIPCIÓN</strong></a>
+        </nav>
+
+        <aside class="aside1">
+            <h4>Recursos</h4>
+            <ul>
+                <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer">Wikipedia: BIOS</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener noreferrer">Wikipedia: UEFI (EN)</a></li>
+                <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer">UEFI Forum</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main">
+            <p>Completa este formulario para recibir noticias sobre el apasionante mundo de BIOS y UEFI.</p>
+        
+            <form action="#" method="post" enctype="application/x-www-form-urlencoded">
+                <label for="fname">Nombre *</label><br>
+                <input id="fname" name="fname" type="text" placeholder="ej: Ernesto Tomás" required><br><br>
+
+                <label for="lname">Apellidos *</label><br>
+                <input id="lname" name="lname" type="text" placeholder="ej: Cétera" required><br><br>
+
+                <label for="email">Correo electrónico *</label><br>
+                <input id="email" name="email" type="email" placeholder="ejemplo@ejemplo.com" required><br><br>
+
+                <label for="emailConfirm">Confirmar correo electrónico *</label><br>
+                <input id="emailConfirm" name="emailConfirm" type="email" placeholder="(ambos deben coincidir)" required><br><br>             
+
+                <label for="prefname">Nombre preferido</label><br>
+                <input id="prefname" name="prefname" type="text" placeholder="ej: Ernie"><br><br>
+
+                <label for="region">Región</label><br>
+                <select id="region" name="region">
+                <option value="">Selecciona...</option>
+                <option>Europa</option>
+                <option>América del norte</option>
+                <option>América del sur</option>
+                <option>África</option>
+                <option>Asia</option>
+                <option>Oceanía</option>
+                </select><br><br>
+
+                <label for="lang">Idioma preferido</label><br>
+                <select id="lang" name="lang">
+                    <option value="es">Español</option>
+                    <option value="ca">Català</option>
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                </select><br><br>
+
+                <label for="ageRange">Rango de edad</label><br>
+                <select id="ageRange" name="ageRange">
+                    <option value="">Prefiero no decirlo</option>
+                    <option value="18-24">18–24</option>
+                    <option value="25-34">25–34</option>
+                    <option value="35-44">35–44</option>
+                    <option value="45-65">45-65</option>
+                    <option value="+65">+65</option>
+                </select><br><br>
+
+                <label>Género (opcional)</label><br>
+                <select name="gender">
+                    <option value="">No especificar</option>
+                    <option>Femenino</option>
+                    <option>Masculino</option>
+                    <option>Prefiero otro término</option>
+                </select><br><br>
+
+                <fieldset>
+                    <legend>Temas de interés (si no marcas ninguno, te enviaremos todas nuestras newsletters)</legend>
+                    <input type="checkbox" name="topics" value="tecnologia"> Tecnología<br>
+                    <input type="checkbox" name="topics" value="noticias"> Noticias<br>
+                    <input type="checkbox" name="topics" value="ofertas"> Ofertas<br>
+                    <input type="checkbox" name="topics" value="eventos"> Eventos<br>
+                    <input type="checkbox" name="topics" value="tutoriales"> Tutoriales<br>
+                </fieldset><br>
+
+                <label for="frequency">Frecuencia preferida</label><br>
+                <select id="frequency" name="frequency">
+                    <option value="week">Semanal</option>
+                    <option value="month">Mensual</option>
+                    <option value="occ">Ocasional (sólo novedades importantes)</option>
+                </select><br><br>
+
+                <label>¿Quieres recibir también comunicaciones comerciales? *</label><br>
+                <input type="radio" name="marketing" value="yes" required> Sí<br>
+                <input type="radio" name="marketing" value="no" required> No<br><br>
+
+                <label for="comments">Comentarios (opcional)</label><br>
+                <textarea id="comments" name="comments" rows="5" cols="80" placeholder="Escribe tus comentarios aquí..."></textarea><br><br>
+
+                <label><input id="consent" name="consent" type="checkbox" required> He leído y acepto la <a href="priv_pol.html" target="_blank">Política de privacidad</a> y doy mi consentimiento para recibir la newsletter.</label><br><br>
+
+                <input type="submit" value="Suscribirme">
+                <input type="reset" value="Limpiar">
+            </form>
+            <p>* Campos obligatorios</p>
+        </main>
+  
+        <br><br><br>
+        <footer>©2026 Jorge Martínez</footer>
+    </body>
+</html>

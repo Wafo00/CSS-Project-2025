@@ -1,0 +1,442 @@
+:root {
+    --bg-page: #e9e9e9;
+    --text-main: #1e293b;
+    --bg-nav-fixed: #182d55;
+    --text-nav-fixed: #FFFFFF;
+    --bg-nav-hover: #1e40af; 
+}
+
+/* enlaces en general */
+a:link { color: blue; transition: color 0.3s ease; }
+a:visited { color: purple; }
+a:hover, a:focus { color: red; }
+a:active { color: green; }
+
+
+@media (prefers-color-scheme: dark) { /* modo oscuro */
+  :root {
+    --bg-page: #070b14;
+    --text-main: #f8fafc;
+  }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    a:link { color: lightblue; }
+    a:visited { color: violet; }
+    a:hover, a:focus { color: orange; }
+    a:active { color: green; }
+}
+
+header {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: 'Atkinson Hyperlegible', Calibri, Arial, sans-serif;
+    text-align: justify;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 150px 1fr 210px;
+    grid-template-rows: auto 1fr auto; 
+    align-content: start;
+    gap: 20px;
+    overflow-x: hidden;
+}
+
+#titulo {
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--text-main);
+    transition: color 0.3s ease; /* todo transicionaba correctamente menos esto */
+}
+
+.nav1 {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+main a { /* mejora la pulsación en móviles */
+    padding: 4px 2px;
+    display: inline-block;
+    color: inherit; /* llegar a esto para que no cambiara los colores me ha costado 2 horas */
+}
+
+@media (prefers-color-scheme: dark) { /* ajuste para enlaces en modo oscuro */
+    main a {
+        color: #93c5fd;
+    }
+
+    main a:hover,
+    main a:focus {
+        color: #fbbf24;
+    }
+}
+
+main img { /* para evitar el desbordamiento en móviles */
+    max-width: 100%;
+    height: auto; /* se escala la imagen sin romper el mapa */
+}
+
+.aside1 {
+    grid-column: 3;
+    grid-row: 2;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--bg-nav-fixed);
+    color: var(--text-nav-fixed);
+    border: 2px solid var(--bg-nav-fixed);
+    align-self: start; 
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.aside1 a { /* mejora la pulsación en móviles */
+    display: block;
+    padding: 6px 4px;
+}
+
+.aside1 h4 {
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* enlaces del aside (estilo general pero con contraste para fondo oscuro) */
+.aside1 a:link { color: #93c5fd; }
+.aside1 a:visited { color: #c4b5fd; }
+.aside1 a:hover, 
+.aside1 a:focus { color: #f87171; }
+.aside1 a:active { color: #4ade80; }
+
+footer {
+    grid-column: 1 / 4;
+    grid-row: 3;
+    display: flex;
+    justify-self: end;
+    align-self: end;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+.nav1 a:link, 
+.nav1 a:visited {
+    display: block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: var(--bg-nav-fixed);
+    color: var(--text-nav-fixed);
+    border: 2px solid var(--bg-nav-fixed);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav1 a:hover, 
+.nav1 a:focus {
+    background-color: var(--bg-nav-hover);
+    border-color: var(--bg-nav-hover);
+    transform: translateY(-2px);
+    color: var(--text-nav-fixed);
+}
+
+.nav1 a:active {
+    transform: translateY(0);
+}
+
+@media (prefers-color-scheme: dark) { /* ajustes para tablas en modo oscuro */
+    .comp-table {
+        border-color: #ccc;
+    }
+    .comp-table th, 
+    .comp-table td {
+        border-color: #ccc;
+    }
+    .comp-table thead th,
+    .comp-table .princ-col {
+        background-color: #1e293b;
+    }
+}
+
+/* estilos para el desbordamiento de tablas */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px; 
+}
+
+.comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000;
+    font-size: 0.95em;
+}
+
+/* estilos de tablas */
+.comp-table caption {
+    caption-side: top;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.comp-table th, 
+.comp-table td {
+    padding: 10px 8px;
+    border: 1px solid #000;
+    vertical-align: top;
+}
+
+.comp-table thead th {
+    font-size: 0.85em;
+    background-color: lightgrey;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: black;
+}
+.comp-table .princ-col {
+    font-size: 0.85em;
+    background-color: lightgrey;
+    text-align: left; /* con esto evito que se añada espacio entre palabras antes del salto de línea "empujando" todo a la izda.*/
+    vertical-align: middle;
+    text-size-adjust: auto;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: black;
+}
+
+.comp-table .spacing-row {
+    padding: 6px;
+    background-color: transparent;
+    border: none;
+}
+
+.comp-table tfoot .table-foot {
+    border: 1px solid transparent;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+/* estilos para formularios */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1em;
+    border: 1px solid #999;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 6px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 2px solid var(--bg-nav-fixed);
+    background-color: var(--bg-nav-fixed);
+    color: var(--text-nav-fixed);
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="reset"] {
+    background-color: transparent;
+    color: var(--bg-nav-fixed);
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: var(--bg-nav-hover);
+    color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    input[type="submit"],
+    input[type="reset"] {
+        background-color: #1e40af;
+        border-color: #1e40af;
+        color: #ffffff;
+    }
+}
+
+label {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+fieldset {
+    border: 1px solid #999;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+fieldset label { /*esto mejora la pulsación en p. táctiles*/
+    display: block;
+    margin-bottom: 6px;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 6px;
+}
+
+@media (max-width: 768px) {
+
+    /* con esto logro que, en pantallas pequeñas, el orden de los elementos sea el que yo quiero */
+    header  { order: 1; }
+    .nav1   { order: 2; }
+    main    { order: 3; }
+    .aside1 { order: 4; }
+    footer  { order: 5; }
+
+    /* tabla */
+    .comp-table {
+        font-size: 0.8em;
+    }
+
+    .comp-table th,
+    .comp-table td {
+        padding: 14px 10px;
+    }
+
+    .comp-table caption {
+        font-size: 0.9em;
+    }
+
+    /* layout */
+    body {
+        display: flex; /* con esto me aseguro de que en pantalla o ventana pequeñas, deje de usarse grid */
+        flex-direction: column; 
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto;
+        gap: 15px;
+    }
+
+    .nav1 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 10px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        width: 100%;
+        padding: 5px 0;
+
+        scrollbar-width: thin; /* si los botones no caben, saldrá un bonito scroll */
+    }
+
+    .nav1 a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+    
+    .aside1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .aside1 ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        gap: 12px;
+
+        overflow-x: auto;
+        justify-content: center;
+
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .aside1 li {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    footer {
+        justify-self: center;
+        text-align: center;
+    }
+
+    main > img[usemap] {
+        display: none;
+    }
+
+    /* formulario */
+    form {
+        padding: 0 5px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

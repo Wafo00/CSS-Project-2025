@@ -69,6 +69,12 @@ body {
     overflow-x: hidden;
 }
 
+.privacy { /* clase específica para la página de política de privacidad */
+    display: block; /* evita que herede el display grid del body */
+    text-align: justify;
+    max-width: 800px;
+}
+
 header {
     grid-column: 1 / 4;
     grid-row: 1;
@@ -116,8 +122,7 @@ header {
 
 .btn:hover {
     background-color: var(--bg-nav-hover);
-    border-color: var(--bg-nav-hover);
-    transform: translateY(-2px);
+    border-color: var(--focus-inset-light);
 }
 
 .btn:active {
@@ -143,7 +148,7 @@ header {
 
 .nav1 a.active { /* añadiendo la clase .active controlo la respuesta de ese botón según la página, y facilito que se vea mejor en móviles*/
     background-color: var(--bg-nav-hover);
-    border-color: var(--bg-nav-hover);
+    border-color: var(--focus-inset-light);
 }
 
 .nav1 a:focus-visible { /* mejora la accesibilidad para usuarios de teclado */
@@ -214,10 +219,20 @@ footer {
     grid-column: 1 / 4;
     grid-row: 3;
     display: flex;
-    justify-self: end;
-    align-self: end;
-    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
     font-size: 0.9em;
+}
+
+.foot-name {
+    text-align: left;
+}
+
+.foot-icons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
 
 /* estilos para el desbordamiento de tablas */
@@ -226,6 +241,7 @@ footer {
     overflow-x: auto;
 }
 
+/*esto es necesario??*/
 .table-wrapper::-webkit-scrollbar {
     height: 8px;
 }
@@ -255,7 +271,7 @@ footer {
 .comp-table td {
     padding: 10px 8px;
     border: 1px solid var(--border-table);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
     vertical-align: top;
     text-align: left;
@@ -285,7 +301,7 @@ footer {
 .comp-table .spacing-row {
     padding: 6px;
     background-color: transparent;
-    border: none;
+    border: 1px solid var(--border-table);
 }
 
 .comp-table tfoot .table-foot {
@@ -476,10 +492,16 @@ legend {
     }
 
     footer {
+        flex-direction: column;
+        gap: 10px;
         justify-self: center;
         text-align: center;
     }
+    .foot-icons {
+        justify-content: center;
+    }
 
+    /* mapa de imagenes de index desactivado en pantallas pequeñas*/
     main > img[usemap] {
         display: none;
     }

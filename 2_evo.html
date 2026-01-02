@@ -7,7 +7,7 @@
         <meta name="author" content="Jorge Martínez">
 		<meta name="keywords" content="BIOS, UEFI, ROM, evolución">
 		<meta name="description" content="Evolución de las BIOS">
-        <link rel="stylesheet" href="styles.css?v=0.3"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
+        <link rel="stylesheet" href="styles.css?v=1.0"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
         <link rel="icon" href="images/star.ico" type="image/x-icon">
         <link rel="icon" type="image/png" sizes="32x32" href="images/star.ico">
         <link rel="icon" type="image/png" sizes="16x16" href="images/star.ico">
@@ -42,7 +42,7 @@
         </aside>
 
         <main class="main">
-            <p>La evolución del BIOS siguió una senda de aumento de capacidad y modularidad. A los BIOS básicos de principios de los ochenta se les fueron añadiendo extensiones: soporte para Plug and Play, ACPI (gestión de energía), soporte para discos grandes con controladores y rutinas de arranque más flexibles. Los fabricantes de firmware como AMI, Award y Phoenix desarrollaron implementaciones cada vez más ricas en características para atender las necesidades de placas base y portátiles contemporáneos.</p>
+            <p>La evolución del BIOS siguió una senda de aumento de capacidad y modularidad. A los BIOS básicos de principios de los ochenta se les fueron añadiendo extensiones: soporte para <strong>Plug and Play</strong>, <strong>ACPI</strong> (gestión de energía), soporte para discos grandes con controladores y rutinas de arranque más flexibles. Los fabricantes de firmware como AMI, Award y Phoenix desarrollaron implementaciones cada vez más ricas en características para atender las necesidades de placas base y portátiles contemporáneos.</p>
 
             <p>El cambio más importante llegó con EFI (Extensible Firmware Interface) creado por Intel y con la estandarización UEFI (Unified Extensible Firmware Interface) en los años 2000. UEFI reemplaza muchas de las limitaciones del BIOS clásico: permite interfaces gráficas, drivers modulares, arranque seguro (Secure Boot), particiones más grandes y tiempos de arranque más rápidos. Hoy en día la mayoría de los equipos modernos usan firmware conforme a UEFI, aunque conservan compatibilidad con el modo “legacy BIOS” para sistemas antiguos.</p>
 
@@ -71,14 +71,14 @@
             <div class="foot-name">
                 <p>©2026 Jorge Martínez</p>
             </div>
-            
-            <div class="foot-icons">
-                <a href="https://jigsaw.w3.org/css-validator/check/referer">
-                    <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss" alt="¡CSS Válido!">
-                </a>
-                <a href="https://jigsaw.w3.org/css-validator/check/referer">
-                    <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss-blue" alt="¡CSS Válido!">
-                </a>
+
+            <div class="foot-icons"> <!-- he añadido este bonito icono porque sigo anclado en los 90 -->
+                <img
+                    src="images/vcss.png"
+                    alt="CSS válido según el W3C"
+                    width="88"
+                    height="31"
+                    title="Este sitio cumple con los estándares del W3C, y esta imagen es supernoventera">
             </div>
         </footer>
     </body>

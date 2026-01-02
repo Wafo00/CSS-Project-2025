@@ -18,15 +18,16 @@ html {
     max-width: 100%;
 }
 
-/* hará que el body tenga scroll horizontal si es necesario, pero no lo forzará */
-body {
-    overflow-x: auto;
+/* enlaces en modo claro */
+a {
+    color: blue;
+    transition: color 0.3s ease;
 }
 
-/* enlaces en general */
-a:link { color: blue; transition: color 0.3s ease; }
 a:visited { color: purple; }
-a:hover, a:focus { color: red; }
+
+a:hover,
+a:focus { color: red; }
 a:active { color: green; }
 
 /* pequeña excepción (más especificidad) para que los enlaces de nav no cambien de color, dando aspecto de botón real, y no simples enlaces */
@@ -35,6 +36,7 @@ a:active { color: green; }
     color: var(--text-nav-fixed);
 }
 
+/* enlaces en modo oscuro */
 @media (prefers-color-scheme: dark) {
     a:link { color: lightblue; }
     a:visited { color: violet; }
@@ -63,14 +65,14 @@ body {
     background-color: var(--bg-page);
     color: var(--text-main);
     transition: background-color 0.3s ease, color 0.3s ease;
-    
     display: grid;
     min-height: 100vh;
     grid-template-columns: 150px 1fr 210px;
     grid-template-rows: auto 1fr auto; 
     align-content: start;
     gap: 20px;
-    overflow-x: hidden;
+    overflow: auto; /* hará que los scrolls de ambos ejes aparezcan solo cuando sean necesarios */
+    
 }
 
 .privacy { /* clase específica para la página de política de privacidad */
@@ -86,8 +88,8 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 #titulo {
@@ -95,29 +97,24 @@ header {
     font-weight: bold;
     text-transform: uppercase;
     color: var(--text-main);
-    transition: color 0.3s ease; /* todo transicionaba correctamente menos esto */
+    transition: color 0.3s ease; /* todo transicionaba entre modos de color correctamente menos esto */
 }
 
 .btn {
-    display: inline-flex;
+    display: inline-flex; /* posteriores reglas, como la de la línea 147, ya se encargan de esto, pero prefiero dejarlo así por si más adelante añado contenido más complejo aquí dentro */
     align-items: center;
     justify-content: center;
-
-    padding: 10px 20px;
+    padding: 10px 20px; /* aumento del padding para mejorar la usabilidad en pantallas táctiles */
     border-radius: 8px;
-
     font-family: inherit;
     font-size: 0.95em;
     font-weight: bold;
     text-decoration: none;
-
     border: 2px solid var(--bg-nav-fixed);
     background-color: var(--bg-nav-fixed);
     color: var(--text-nav-fixed);
-
     cursor: pointer;
     white-space: nowrap;
-
     transition: background-color 0.3s ease,
                 border-color 0.3s ease,
                 transform 0.3s ease,
@@ -130,11 +127,11 @@ header {
 }
 
 .btn:active {
-    transform: translateY(0);
+    transform: translateY(2px); /* un bonito efecto de pulsación */
 }
 
-.btn:focus-visible {
-    box-shadow: 0 0 0 2px var(--focus-inset-light) inset;
+.btn:focus-visible { /* muestra el foco solo a usuarios de teclado */
+    box-shadow: 0 0 0 2px var(--focus-inset-light) inset; /* box-shadow en lugar de outline para que forme parte del box model; me permite respetad los bordes y que se vea igual en todos los navegadores */
 }
 
 .nav1 {
@@ -146,11 +143,11 @@ header {
 }
 
 .nav1 a {
-    display: block;
+    display: block; /* mejora la pulsación en móviles al convertir el enlace en una superficie completa, y no solo el texto*/
     text-decoration: none;
 }
 
-.nav1 a.active { /* añadiendo la clase .active controlo la respuesta de ese botón según la página, y facilito que se vea mejor en móviles*/
+.nav1 a.active { /* añadiendo la clase .active controlo la respuesta de ese botón según la página, y facilito que se vea mejor en móviles */
     background-color: var(--bg-nav-hover);
     border-color: var(--focus-inset-light);
 }
@@ -183,7 +180,7 @@ main a { /* mejora la pulsación en móviles */
 
 main img { /* para evitar el desbordamiento en móviles */
     max-width: 100%;
-    height: auto; /* se escala la imagen sin romper el mapa */
+    height: auto; /* se escala la imagen sin romper el mapa de index.html */
 }
 
 .aside1 {
@@ -212,10 +209,11 @@ main img { /* para evitar el desbordamiento en móviles */
     width: 100%;
 }
 
-/* enlaces del aside (estilo general pero con contraste para fondo oscuro) */
+/* enlaces del aside (estilo general pero con contraste para el fondo azul oscuro) */
 .aside1 a:link { color: #93c5fd; }
 .aside1 a:visited { color: #c4b5fd; }
-.aside1 a:hover, 
+
+.aside1 a:hover,
 .aside1 a:focus { color: #f87171; }
 .aside1 a:active { color: #4ade80; }
 
@@ -245,16 +243,6 @@ footer {
     overflow-x: auto;
 }
 
-/*esto es necesario??*/
-.table-wrapper::-webkit-scrollbar {
-    height: 8px;
-}
-
-.table-wrapper::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.3);
-    border-radius: 4px; 
-}
-
 /* estilos de tablas */
 .comp-table {
     width: 100%;
@@ -276,7 +264,6 @@ footer {
     padding: 10px 8px;
     border: 1px solid var(--border-table);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-
     vertical-align: top;
     text-align: left;
 }
@@ -294,7 +281,7 @@ footer {
 .comp-table .princ-col {
     font-size: 0.85em;
     background-color: lightgrey;
-    text-align: left; /* con esto evito que se añada espacio entre palabras antes del salto de línea "empujando" todo a la izda.*/
+    text-align: left; /* con esto evito que se añada espacio entre palabras antes del salto de línea "empujando" todo a la izda. */
     vertical-align: middle;
     text-size-adjust: auto;
     text-transform: uppercase;
@@ -318,18 +305,59 @@ footer {
     :root {
     --border-table: #ccc;
     }
+
     .comp-table {
         border: 1px solid var(--border-table);
     }
+
     .comp-table th, 
     .comp-table td {
         border: 1px solid var(--border-table);
         box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.15);
     }
+
     .comp-table thead th,
     .comp-table .princ-col {
         background-color: #1e293b;
         color:var(--text-nav-fixed);
+    }
+}
+
+/* scrolls personalizados */
+
+/* para WebKit (Chrome, Edge, Safari) generarán advertencia de validador */
+::-webkit-scrollbar { /* no aplico selector universal porque webkit ya lo hace por defecto*/
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+/* para Firefox */
+* { /* selector universal para que afecte a todos los elementos con scroll*/
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
+}
+
+/* scrolls en modo oscuro. las webkits generarán advertencia de validador */
+@media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.35);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255, 255, 255, 0.55);
+    }
+
+    * { /*selector universal para que afecte a todos los elementos con scroll */
+        scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
     }
 }
 
@@ -410,9 +438,10 @@ legend {
         overflow-y: auto;
     }
 }
-@media (max-width: 768px) { /* esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo */
 
-    /* con esto logro que, en pantallas pequeñas, el orden de los elementos sea el que yo quiero */
+@media (max-width: 900px) { /* esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 560) */
+/* con esto logro que, en pantallas pequeñas, el orden de los elementos se muestre en el orden deseado */
+
     header  { order: 1; }
     .nav1   { order: 2; }
     main    { order: 3; }
@@ -445,20 +474,20 @@ legend {
 
     .nav1 {
         display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
 
+        /* flex-direction: row;
+        flex-wrap: nowrap; */
+        flex-flow: row nowrap; /* fuerzo a que los botones estén en una sola fila en caso de que se cumpla el media query */
         justify-content: flex-start; /* previamente lo tenía como "center", y se me cortaban "botones" hacia la izquierda en móviles */
         align-items: center;
-
         gap: 10px;
 
-        overflow-x: auto;
-        overflow-y: hidden;
+        /* overflow-x: auto;
+        overflow-y: hidden; */
 
+        overflow: auto hidden;
         width: 100%;
         padding: 5px 10px; /* un poco de padding para que no se pegue el contenido a los bordes */
-
         scrollbar-width: thin; /* si los botones no caben, saldrá un bonito scroll */
     }
 
@@ -475,7 +504,6 @@ legend {
         display: flex;
         flex-direction: column;
         align-items: center;
-
         width: 100%;
         max-width: 100%;
         margin: 0 auto;
@@ -483,14 +511,14 @@ legend {
 
     .aside1 ul {
         display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
+        
+        /* flex-direction: row;
+        flex-wrap: nowrap; */
 
+        flex-flow: nowrap;
         gap: 12px;
-
         overflow-x: auto;
         justify-content: center;
-
         width: 100%;
         padding: 5px 0;
     }
@@ -505,6 +533,7 @@ legend {
         gap: 10px;
         text-align: center;
     }
+
     .foot-icons {
         justify-content: center;
     }
@@ -532,7 +561,12 @@ legend {
     }
 }
 
-body { /* con esto aseguro el scroll vertical en móviles */
-    min-height: 100vh;
-    overflow-y: auto;
-}
+/* Los media queries referentes al modo oscuro se han añadido justo después de los estilos generales afectados, para facilitar su localización. No utilizaría este enfoque en proyectos colaborativos, y los pondría todos al final, con las debidas anotaciones */
+
+/* Se han tenido en cuenta las recomendaciones de accesibilidad WCAG 2.1 para contraste de colores en modo oscuro y claro y la facilidad de uso en pantallas táctiles, con áreas de toque grandes y guías visuales claras */
+
+/* Estoy usando por primera vez Stylelint (después del validador de W3c) para validar este código CSS, por lo que aún me estoy acostumbrando a sus recomendaciones y reglas. He aplicado las recomendaciones en cuanto a líneas en blanco y algunas para la longitud de los colores, pero he descartado la sintaxis "moderna" de colores en favor de la compatibilidad con navegadores más antiguos, por parecerme buena práctica (por este mismo motivo desoigo la recomendación de Stylelint de usar porcentajes en lugar de decimales para el alfa de los colores). También he eliminado cosas como "0px" en favor de "0" ya que, al ser 0, no es necesaria la unidad */
+
+/* En los media queries también me decanto por la compatibilidad, no usando la sintaxis moderna de rango que aconseja Stylelint. No creo que nadie vaya a abrir esto en Netscape, pero me parece una buena práctica, por el momento */
+
+/* Adjunto el archivo de configuración de Stylelint que he usado */

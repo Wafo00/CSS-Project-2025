@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-hex-length": "long",
+    "color-function-notation": "legacy",
+    "selector-max-id": 1,
+    "selector-max-type": 3,
+    "declaration-no-important": true,
+    "no-descending-specificity": null,
+    "font-family-no-missing-generic-family-keyword": null
+  }
+}

@@ -13,10 +13,14 @@
     box-sizing: border-box;
 }
 
-/* Evita scroll horizontal indeseado en móvil */
-html, body {
+/* Evita scroll horizontal indeseado en móvil al abrir la página*/
+html {
     max-width: 100%;
-    overflow-x: hidden;
+}
+
+/* hará que el body tenga scroll horizontal si es necesario, pero no lo forzará */
+body {
+    overflow-x: auto;
 }
 
 /* enlaces en general */

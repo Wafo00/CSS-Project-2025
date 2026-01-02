@@ -401,6 +401,11 @@ legend {
     padding: 0 6px;
 }
 
+@media (hover: none) and (pointer: coarse) {
+    body {
+        overflow-y: auto;
+    }
+}
 @media (max-width: 768px) { /* esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo */
 
     /* con esto logro que, en pantallas pequeñas, el orden de los elementos sea el que yo quiero */

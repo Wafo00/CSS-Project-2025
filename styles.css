@@ -527,3 +527,8 @@ legend {
         overflow-y: auto;
     }
 }
+
+body { /* con esto aseguro el scroll vertical en móviles */
+    min-height: 100vh;
+    overflow-y: auto;
+}

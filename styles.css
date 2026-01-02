@@ -494,7 +494,6 @@ legend {
     footer {
         flex-direction: column;
         gap: 10px;
-        justify-self: center;
         text-align: center;
     }
     .foot-icons {

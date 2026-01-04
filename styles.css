@@ -1,4 +1,4 @@
-/* Anotaciones al final de esta página */
+/* Anotaciones generales al final de esta página */
 
 :root {
     --bg-page: #e9e9e9;
@@ -571,23 +571,50 @@ legend {
     .aside1 { order: 4; }
     footer  { order: 5; }
 
-        .nav1 {
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 10px;
-        overflow: auto hidden;
-        width: 100%;
-        padding: 5px 10px;
+    .nav1 {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    overflow: auto hidden;
+    width: 100%;
+    padding: 5px 10px;
     }
 
     .nav1 a {
         flex: 0 0 auto;
         white-space: nowrap;
     }
+
+    .aside1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .aside1 ul {
+        display: flex;
+        
+        /* flex-direction: row;
+        flex-wrap: nowrap; */
+
+        flex-flow: nowrap;
+        gap: 12px;
+        overflow-x: auto;
+        justify-content: center;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .aside1 li {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
 }
 
-@media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 676) */
+@media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 733) */
 
 /* Con esto logro que, en pantallas pequeñas, el orden de los elementos se muestre en el orden deseado cuando se cambie de grid a flex */
     header  { order: 1; }

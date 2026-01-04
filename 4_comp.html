@@ -7,7 +7,7 @@
         <meta name="author" content="Jorge Martínez">
 		<meta name="keywords" content="BIOS, UEFI, ROM, curiosidades">
 		<meta name="description" content="Comparativa entre BIOS">
-        <link rel="stylesheet" href="styles.css?v=1.0"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
+        <link rel="stylesheet" href="styles.css?v=1.1"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
         <link rel="icon" href="images/star.ico" type="image/x-icon">
         <link rel="icon" type="image/png" sizes="32x32" href="images/star.ico">
         <link rel="icon" type="image/png" sizes="16x16" href="images/star.ico">
@@ -46,11 +46,10 @@
             <h2>Tabla comparativa centrada en la evolución y capacidades de distintos firmwares.</h2>
             <div class="table-wrapper">
                 <table class="comp-table">
-                    <!--"border-collapse:collapse" parece imitar el espaciado entre celdas, como lo haría el obsoleto "border=1"-->
                     <caption>Firmwares: Legacy, UEFI y alternativas (implementaciones y proyectos)</caption>
                     <thead>
                         <tr>
-                            <!--Uso de "scope" indica a qué celdas se aplica el encabezado th. Parece una buena práctica de cara a la accesibilidad, aunque aún no comprendo del todo su funcionamiento. Entiendo que, en mi código, lo estoy aplicando a la columna completa, y un lector de pantalla las identificaría como algo que hay que leer primero-->
+                            <!--Uso de "scope" indica a qué celdas se aplica el encabezado th. Parece una buena práctica de cara a la accesibilidad. Entiendo que, en mi código, lo estoy aplicando a la columna completa, y un lector de pantalla las identificaría como algo que hay que leer primero-->
                             <th scope="col">Sistema / Proyecto</th>
                             <th scope="col">Aparición (aprox.)</th>
                             <th scope="col">Tipo / Arquitectura</th>

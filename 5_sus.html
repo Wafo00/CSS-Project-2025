@@ -7,7 +7,7 @@
         <meta name="author" content="Jorge Martínez">
 		<meta name="keywords" content="BIOS, UEFI, ROM, curiosidades, suscripción, newsletter">
 		<meta name="description" content="Suscripción a la newsletter sobre BIOS">
-        <link rel="stylesheet" href="styles.css?v=1.0"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
+        <link rel="stylesheet" href="styles.css?v=1.1"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
         <link rel="icon" href="images/star.ico" type="image/x-icon">
         <link rel="icon" type="image/png" sizes="32x32" href="images/star.ico">
         <link rel="icon" type="image/png" sizes="16x16" href="images/star.ico">
@@ -52,7 +52,7 @@
                 <input id="lname" name="lname" type="text" placeholder="ej: Cétera" required><br><br>
 
                 <label for="email">Correo electrónico *</label><br>
-                <input id="email" name="email" type="email" placeholder="ejemplo@ejemplo.com" required><br><br>
+                <input id="email" name="email" type="email" placeholder="ejemplo@ejemplo.com" required><br><br> <!-- La validación se está haciendo con html5, por lo que solo se va a fijar si hay algo a la izquierda y a la derecha de la @ -->
 
                 <label for="emailConfirm">Confirmar correo electrónico *</label><br>
                 <input id="emailConfirm" name="emailConfirm" type="email" placeholder="(ambos deben coincidir)" required><br><br>             
@@ -149,5 +149,28 @@
                     title="Este sitio cumple con los estándares del W3C, y esta imagen es supernoventera">
             </div>
         </footer>
+
+            <script>
+        const email = document.getElementById('email');
+        const emailConfirm = document.getElementById('emailConfirm');
+
+        function validateEmails() {
+            if (emailConfirm.value === '') {
+            emailConfirm.setCustomValidity('');
+            return;
+            }
+
+            if (email.value !== emailConfirm.value) {
+            emailConfirm.setCustomValidity('Los correos electrónicos no coinciden');
+            } else {
+            emailConfirm.setCustomValidity('');
+            }
+        }
+
+        email.addEventListener('input', validateEmails);
+        emailConfirm.addEventListener('input', validateEmails);
+    </script>
+
     </body>
+
 </html>

@@ -557,7 +557,7 @@ legend {
     }
 }
 
-@media (max-width: 1150px) { /* Esto está especialmente pensado para la página de la tabla, en la que el breakpoint de 900 hacía que desapareciera el aside y hubiera que hacer scroll. De esta forma se aplica el modo "pantalla estrecha" antes al reducir el tamaño de la ventana en escritorio */
+@media (max-width: 1150px) { /* Esto está especialmente pensado para la página de la tabla, en la que el breakpoint de 900 (más abajo) hacía que desapareciera el aside y hubiera que hacer scroll. De esta forma se aplica el modo "pantalla estrecha" antes al reducir el tamaño de la ventana en escritorio */
     body {
         display: flex;
         flex-direction: column;
@@ -572,13 +572,13 @@ legend {
     footer  { order: 5; }
 
     .nav1 {
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    overflow: auto hidden;
-    width: 100%;
-    padding: 5px 10px;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        overflow: auto hidden;
+        width: 100%;
+        padding: 5px 10px;
     }
 
     .nav1 a {
@@ -614,7 +614,7 @@ legend {
     }
 }
 
-@media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 733) */
+@media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 733). Este breakpoint está pensado para mejorar la experiencia táctil; complementa al anterior */
 
 /* Con esto logro que, en pantallas pequeñas, el orden de los elementos se muestre en el orden deseado cuando se cambie de grid a flex */
     header  { order: 1; }
@@ -730,7 +730,7 @@ legend {
     }
 }
 
-@media (max-width: 1024px) and (orientation: landscape) { /* Para pantallas pequeñas al ponerlas en horizontal */
+@media (max-width: 1024px) and (orientation: landscape) { /* Para pantallas pequeñas al ponerlas en horizontal. No es redundante con los anteriores, puesto que puede ser que en móviles se superen la densidad de 1024px en horizontal, pero la pantalla siga siendo pequeña. Tal como están ordenadas las reglas, tiene sentido */
     body {
         overflow-y: auto;
         display: flex;

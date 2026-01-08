@@ -34,7 +34,7 @@ a {
 a:visited { color: purple; }
 
 a:hover,
-a:focus { color: red; }
+a:focus     { color: red; }
 a:active { color: green; }
 
 /* Pequeña excepción (más especificidad) para que los enlaces de nav no cambien de color, dando aspecto de botón real, y no simples enlaces */
@@ -557,21 +557,37 @@ legend {
     }
 }
 
-@media (max-width: 1150px) { /* Esto está especialmente pensado para la página de la tabla, en la que el breakpoint de 900 (más abajo) hacía que desapareciera el aside y hubiera que hacer scroll. De esta forma se aplica el modo "pantalla estrecha" antes al reducir el tamaño de la ventana en escritorio */
+@media (max-width: 1150px) { /* Esto está especialmente pensado para la página de la tabla, en la qe el breakpoint de 900 (más abajo) hacía que desapareciera el aside y hubiera que hacer scroll. De esta forma se aplica el modo "pantalla estrecha" antes al reducir el tamaño de la ventana en escritorio */
     body {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 20px;
         width: 100%;
     }
 
+    /* En pantallas pequeñas, los elementos se muestran en el orden deseado cuando se cambie de grid a flex */
     header  { order: 1; }
     .nav1   { order: 2; }
     main    { order: 3; }
     .aside1 { order: 4; }
     footer  { order: 5; }
 
+    /* Tabla */
+    .comp-table {
+        font-size: 0.8em;
+    }
+
+    .comp-table th,
+    .comp-table td {
+        padding: 14px 10px;
+    }
+
+    .comp-table caption {
+        font-size: 0.9em;
+    }
+
     .nav1 {
+        display: flex;
         flex-flow: row nowrap;
         justify-content: flex-start;
         align-items: center;
@@ -616,27 +632,6 @@ legend {
 
 @media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 733). Este breakpoint está pensado para mejorar la experiencia táctil; complementa al anterior */
 
-/* Con esto logro que, en pantallas pequeñas, el orden de los elementos se muestre en el orden deseado cuando se cambie de grid a flex */
-    header  { order: 1; }
-    .nav1   { order: 2; }
-    main    { order: 3; }
-    .aside1 { order: 4; }
-    footer  { order: 5; }
-
-    /* Tabla */
-    .comp-table {
-        font-size: 0.8em;
-    }
-
-    .comp-table th,
-    .comp-table td {
-        padding: 14px 10px;
-    }
-
-    .comp-table caption {
-        font-size: 0.9em;
-    }
-
     /* Layout */
     body {
         display: flex; /* Con esto me aseguro de que en pantalla o ventana pequeñas, deje de usarse grid */
@@ -648,8 +643,6 @@ legend {
     }
 
     .nav1 {
-        display: flex;
-
         /* flex-direction: row;
         flex-wrap: nowrap; */
         flex-flow: row nowrap; /* Fuerzo a que los botones estén en una sola fila en caso de que se cumpla el media query */

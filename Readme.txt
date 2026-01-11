@@ -1,0 +1,13 @@
+En la rúbrica se establece que "el menú de navegación aparecerá en una sola línea". El estilo aplicado es flex, pero el aspecto es de columna. En el modo "pantalla estrecha" se muestra en una línea en la parte superior. Esto es deliberado, no una omisión, y considero que el criterio se está cumpliendo.
+
+Utilizo, también, una única hoja de estilos común para todas las páginas. Remarco esto porque, según está redactada la rúbrica, puede interpretarse que se requiere una hoja de estilos por cada fichero.
+
+Los media queries referentes al modo oscuro se han añadido justo después de los estilos generales afectados, para facilitar su localización. No utilizaría este enfoque en proyectos colaborativos, y los pondría todos al final, con las debidas anotaciones.
+
+Se han tenido en cuenta las recomendaciones de accesibilidad para cumplir con WCAG 2.1 nivel AA, y se aplican, de forma parcial, criterios de nivel AAA. Se ha cuidado el contraste de colores en modo oscuro y claro, y la facilidad de uso en pantallas táctiles, con áreas de toque grandes y guías visuales claras. También se incuyen avisos de enlaces en nueva pestaña. El mapa de imagen se oculta en modo "pantalla estrecha", por lo que no requiere de más arreglos de accesibilidad. Se ha incluido un enlace de "salto al contenido principal" como medida preventiva de accesibilidad, aunque el tamaño reducido del sitio hace que su impacto práctico sea limitado. Me parece, sin embargo, una buena práctica
+
+Estoy usando por primera vez Stylelint (después del validador de W3C) para validar este código CSS, por lo que aún me estoy acostumbrando a sus recomendaciones y reglas. He aplicado las recomendaciones en cuanto a líneas en blanco y algunas para la longitud de los colores, pero he descartado la sintaxis "moderna" de colores en favor de la compatibilidad con navegadores más antiguos, por parecerme buena práctica (por este mismo motivo desoigo la recomendación de Stylelint de usar porcentajes en lugar de decimales para el alfa de los colores). También he eliminado cosas como "0px" en favor de "0" ya que, al ser 0, no es necesaria la unidad.
+
+En los media queries también me decanto por la compatibilidad, no usando la sintaxis moderna de rango que aconseja Stylelint. No creo que nadie vaya a abrir esto en Netscape, pero me parece una buena práctica, en este momento.
+
+Se adjunta el archivo de configuración de Stylelint que he usado.

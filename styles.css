@@ -1,4 +1,4 @@
-/* Anotaciones generales al final de esta página */
+/* Anotaciones generales en README.md (GitHub) y en Readme.txt (En el directorio local de este proyecto) */
 
 :root {
     --bg-page: #e9e9e9;
@@ -7,7 +7,7 @@
     --text-nav: #FFFFFF;
     --bg-nav-hover: #1e40af;
     --focus-inset-light: rgba(255, 255, 255, 0.4); /* Para un box-shadow de foco en pantallas pequeñas, usado más adelante */
-    --focus-color: #1e40af;
+    --focus-color: #95c3ff;
     --focus-ring-light: rgba(30, 64, 175, 0.35);
     --focus-ring-dark: rgba(147, 197, 253, 0.45);
     --table-border: #000;
@@ -20,22 +20,32 @@
     box-sizing: border-box;
 }
 
-/* Evita scroll horizontal indeseado en móvil al abrir la página*/
+/* Evitar scroll horizontal indeseado en móvil al abrir la página y aplicar reglas de ajuste de texto globales */
 html {
     max-width: 100%;
+    -webkit-text-size-adjust: 100%; /* Generará advertencia en el validador junto con la siguiente */
+    -moz-text-size-adjust: auto; /* Firefox no reconoce text-size-djust: 100%. No es un problema, pero intento dejar limpio el panel de advertencias del inspector de Firefox */
+    text-size-adjust: 100%;
 }
 
 /* Enlaces en modo claro */
 a {
     color: blue;
+}
+
+a:visited { 
+    color: purple; 
+}
+
+a:hover,
+a:focus {
+    color: red;
     transition: color 0.3s ease;
 }
 
-a:visited { color: purple; }
-
-a:hover,
-a:focus     { color: red; }
-a:active { color: green; }
+a:active { 
+    color: green; 
+}
 
 /* Pequeña excepción (más especificidad) para que los enlaces de nav no cambien de color, dando aspecto de botón real, y no simples enlaces */
 .nav1 a:link,
@@ -45,13 +55,35 @@ a:active { color: green; }
 
 /* Enlaces en modo oscuro */
 @media (prefers-color-scheme: dark) {
-    a:link { color: lightblue; }
-    a:visited { color: violet; }
-    a:hover, a:focus { color: orange; }
-    a:active { color: green; }
+    a:link {
+        color: lightblue;
+    }
+    
+    a:visited {
+        color: violet;
+    }
+    
+    a:hover, a:focus {
+        color: orange;
+    }
+    
+    a:active {
+        color: green;
+    }
 }
 
-ul {
+/* Defino explícitamente todos los estados del enlace a GitHub del fotter (a partir de línea 283) para evitar que las reglas globales de enlaces (a:link, a:visited), especialmente en modo oscuro, lo sobrescriban en navegadores como Chrome */
+.github-link,
+.github-link:link,
+.github-link:visited,
+.github-link:hover,
+.github-link:focus,
+.github-link:active {
+    color: var(--text-nav);
+}
+
+.nav ul,
+.aside1 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -66,7 +98,20 @@ ul {
   }
 }
 
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 10px;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
 body {
+    display: grid;
+    grid-template-columns: 150px 1fr 210px;
+    grid-template-rows: auto 1fr auto; 
     margin: 0;
     padding: 10px;
     font-family: 'Atkinson Hyperlegible', Calibri, Arial, sans-serif;
@@ -74,10 +119,8 @@ body {
     background-color: var(--bg-page);
     color: var(--text-main);
     transition: background-color 0.3s ease, color 0.3s ease;
-    display: grid;
-    min-height: 100vh;
-    grid-template-columns: 150px 1fr 210px;
-    grid-template-rows: auto 1fr auto; 
+    min-height: 100vh; /* Uso esto para evitar el efecto de "pequeño zoom por defecto" al entrar desde disp. móviles */
+
     align-content: start;
     gap: 20px;
     overflow: auto; /* Hará que los scrolls de ambos ejes aparezcan solo cuando sean necesarios */
@@ -110,7 +153,7 @@ header {
 }
 
 .btn {
-    display: inline-flex; /* Posteriores reglas, como la de la línea 148, ya se encargan de esto, pero prefiero dejarlo así por si más adelante añado contenido más complejo aquí dentro */
+    display: inline-flex; /* Por fuera, el comportamiento es en línea; internamente se organiza como un flexbox. Posteriores reglas ya se encargan de esto, pero prefiero dejarlo así por si más adelante añado contenido más complejo aquí dentro */
     align-items: center;
     justify-content: center;
     padding: 10px 20px; /* Aumento del padding para mejorar la usabilidad en pantallas táctiles */
@@ -211,7 +254,8 @@ main img { /* Para evitar el desbordamiento en móviles */
     padding: 6px 4px;
 }
 
-.aside1 h4 {
+.aside1 h2 {
+    font-size: 1.2em;
     margin-top: 0;
     text-align: center;
     margin-bottom: 10px;
@@ -237,6 +281,9 @@ footer {
 }
 
 .foot-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-align: left;
 }
 
@@ -244,6 +291,36 @@ footer {
     display: flex;
     gap: 8px;
     align-items: center;
+}
+
+.github-link {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background-color: var(--bg-nav);
+    color: var(--text-nav);
+    text-decoration: none;
+    font-size: 0.85em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.github-link span { /* Para separar el icono del enlace */
+    margin-right: 4px; 
+}
+
+/* Defino colores específicos para el enlace de GitHub para que no herede colores globales en los estados hover y focus. Esto evita problemas de contraste */
+.github-link:hover,
+.github-link:focus {
+    background-color: var(--bg-nav-hover);
+}
+
+.github-link:focus-visible { /* Aquí replico el funcionamiento de la clase .btn */
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus-inset-light) inset;
+}
+
+.github-link:active {
+    transform: translateY(1px);
 }
 
 /* Estilos para el desbordamiento de tablas */
@@ -261,6 +338,7 @@ footer {
     border-collapse: separate; /* Efecto de espacio entre celdas en lugar de usar el obsoleto border=1 */
     border-spacing: 0 1px;
     font-size: 0.95em;
+    
 }
 
 .comp-table caption {
@@ -294,7 +372,6 @@ footer {
     background-color: lightgrey;
     text-align: left; /* Con esto evito que se añada espacio entre palabras antes del salto de línea "empujando" todo a la izda. */
     vertical-align: middle;
-    text-size-adjust: auto;
     text-transform: uppercase;
     font-weight: bold;
     color: black;
@@ -551,10 +628,24 @@ legend {
     padding: 0 6px;
 }
 
+ /* Detección de dispositivos táctiles puros. Coarse indica la precisión, dedo en este caso. También evito scroll accidental con entrada táctil */
 @media (hover: none) and (pointer: coarse) {
     body {
         overflow-y: auto;
     }
+}
+
+/* Con esto oculto de la vista, pero no de los lectores de pantalla, el contenido esta clase, que estoy aplicando al mapa de imagen de index.html */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%); /* inset (50% 50% 50% 50%); un rectángulo al que se le recorta un 50% por cada uno de esos lados. Resultado: 0px, oculto visualmente, pero no para lectores */
+    white-space: nowrap;
+    border: 0;
 }
 
 @media (max-width: 1150px) { /* Esto está especialmente pensado para la página de la tabla, en la qe el breakpoint de 900 (más abajo) hacía que desapareciera el aside y hubiera que hacer scroll. De esta forma se aplica el modo "pantalla estrecha" antes al reducir el tamaño de la ventana en escritorio */
@@ -630,7 +721,7 @@ legend {
     }
 }
 
-@media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 733). Este breakpoint está pensado para mejorar la experiencia táctil; complementa al anterior */
+@media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 745). Este breakpoint está pensado para mejorar la experiencia táctil; complementa al anterior */
 
     /* Layout */
     body {
@@ -702,6 +793,14 @@ legend {
         text-align: center;
     }
 
+    .foot-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    }
+
     .foot-icons {
         justify-content: center;
     }
@@ -738,17 +837,3 @@ legend {
     .aside1 { order: 4; }
     footer  { order: 5; }
 }
-
-/* En la rúbrica se establece que "el menú de navegación aparecerá en una sola línea". El estilo aplicado es flex, pero el aspecto es de columna. En el modo "pantalla estrecha" se muestra en una línea en la parte superior. Esto es deliberado, no una omisión, y considero que el criterio se está cumpliendo */
-
-/* Utilizo, también una única hoja de estilos común para todas las páginas. Remarco esto porque, según está redactada la rúbrica, puede interpretarse que se requiere una hoja de estilos por cada fichero */
-
-/* Los media queries referentes al modo oscuro se han añadido justo después de los estilos generales afectados, para facilitar su localización. No utilizaría este enfoque en proyectos colaborativos, y los pondría todos al final, con las debidas anotaciones */
-
-/* Se han tenido en cuenta las recomendaciones de accesibilidad WCAG 2.1 para contraste de colores en modo oscuro y claro y la facilidad de uso en pantallas táctiles, con áreas de toque grandes y guías visuales claras */
-
-/* Estoy usando por primera vez Stylelint (después del validador de W3c) para validar este código CSS, por lo que aún me estoy acostumbrando a sus recomendaciones y reglas. He aplicado las recomendaciones en cuanto a líneas en blanco y algunas para la longitud de los colores, pero he descartado la sintaxis "moderna" de colores en favor de la compatibilidad con navegadores más antiguos, por parecerme buena práctica (por este mismo motivo desoigo la recomendación de Stylelint de usar porcentajes en lugar de decimales para el alfa de los colores). También he eliminado cosas como "0px" en favor de "0" ya que, al ser 0, no es necesaria la unidad */
-
-/* En los media queries también me decanto por la compatibilidad, no usando la sintaxis moderna de rango que aconseja Stylelint. No creo que nadie vaya a abrir esto en Netscape, pero me parece una buena práctica, por el momento */
-
-/* Adjunto el archivo de configuración de Stylelint que he usado */

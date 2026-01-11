@@ -11,25 +11,26 @@ FECHA DE ENTREGA.....: Jueves 15 de enero de 2026-->
         <meta name="author" content="Jorge Martínez">
 		<meta name="keywords" content="BIOS, UEFI, ROM, curiosidades, historia">
 		<meta name="description" content="Historia y descripción de BIOS">
-        <link rel="stylesheet" href="styles.css?v=1.2"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
+        <link rel="stylesheet" href="styles.css?v=1.5"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
         <link rel="icon" href="images/star.ico" type="image/x-icon">
         <link rel="icon" type="image/png" sizes="32x32" href="images/star.ico">
         <link rel="icon" type="image/png" sizes="16x16" href="images/star.ico">
     </head>
 
     <body class="preload">
+        <a href="#main" class="skip-link">Saltar al contenido</a>
         <header>
-           <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer">
+           <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
                 <picture>
                     <source srcset="images/star.png" type="image/png">
                     <img src="images/star.png" alt="Logo Energy Star" width="80">
                 </picture>
             </a>
-            <span id="titulo">Inicio</span>
+            <h1 id="titulo">Inicio</h1>
         </header>
 
         <nav class="nav1">
-            <a href="index.html" class="active btn"><strong>INICIO</strong></a>
+            <a href="index.html" class="active btn" aria-current="page"><strong>INICIO</strong></a>
             <a href="1_hist.html" class="btn">Historia</a>
             <a href="2_evo.html" class="btn">Evolución</a>
             <a href="3_curio.html" class="btn">Curiosidades</a>
@@ -38,15 +39,15 @@ FECHA DE ENTREGA.....: Jueves 15 de enero de 2026-->
         </nav>
 
         <aside class="aside1">
-            <h4>Recursos</h4>
+            <h2>Recursos</h2>
             <ul>
-                <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer">Wikipedia: BIOS</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener noreferrer">Wikipedia: UEFI (EN)</a></li>
-                <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer">UEFI Forum</a></li>
+                <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: BIOS</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: UEFI (EN)</a></li>
+                <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">UEFI Forum</a></li>
             </ul>
         </aside>
 
-        <main class="main">
+        <main id="main" class="main">
             <p>Te doy la bienvenida a esta pequeña web en la que se hablará, de forma somera, sobre el sistema BIOS, su historia y algunas curiosidades. Si te gusta, suscríbete a nuestra newsletter para que no muera un gatito. Usa la barra de navegación, la lista de enlaces, o pincha en las puntas de la estrella (en la imagen de abajo; no válido para pantallas pequeñas) para acceder a los contenidos.</p>
             <ul>
                 <li><a href="1_hist.html">Historia de BIOS</a></li>
@@ -56,7 +57,12 @@ FECHA DE ENTREGA.....: Jueves 15 de enero de 2026-->
                 <li><a href="5_sus.html">Formulario de registro</a></li>
             </ul>
 
-            <img src="images/starmap1.png" usemap="#image-map" style="display:block; margin:auto;" alt="Imagen interactiva Energy Star">
+            <img src="images/starmap1.png" usemap="#image-map" style="display:block; margin:auto;" alt="Imagen interactiva Energy Star" aria-describedby="desc-mapa">
+            <p id="desc-mapa" class="sr-only">
+                Mapa interactivo con forma de estrella que contiene enlaces a las distintas secciones del sitio: Historia de la BIOS, Evolución, Curiosidades, Comparativa y Suscripción. Cada punta de la estrella actúa como un enlace equivalente al menú de navegación principal.
+            </p>
+            <!-- Se incorpora una descripción larga para el mapa interactivo. La id la usa únicamente aria-describedby mientras que la clase se define en la hoja de estilos. Quizá sería mejor ocultar el mapa a los lectores de pantalla, pero gente con algo de visión quizá podría verlo al acercarse o hacer zoom. De hecho, el mapa solo se mantiene para cumplir con los criterios establecidos en la rúbrica; no lo usaría en un escenario real -->
+            <!-- La imagen es, por defecto, display: inline, y se comportaba como texto. Con display: block ocupa la línea entera y, además, puedo centrarla --> 
 
             <div>
             <map name="image-map">
@@ -74,6 +80,10 @@ FECHA DE ENTREGA.....: Jueves 15 de enero de 2026-->
         <footer>
             <div class="foot-name">
                 <p>©2026 Jorge Martínez</p>
+                <a href="https://github.com/Wafo00/CSS-Project-2025/tree/main" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
+                    <span aria-hidden="true">🔗</span>
+                    Proyecto en GitHub
+                </a> <!-- Icono de enlace decorativo; añado aria-hidden para ocultarlo a lectores de pantalla -->
             </div>
 
             <div class="foot-icons"> <!-- he añadido este bonito icono porque sigo anclado en los 90 -->
@@ -82,7 +92,8 @@ FECHA DE ENTREGA.....: Jueves 15 de enero de 2026-->
                     alt="CSS válido según el W3C"
                     width="88"
                     height="31"
-                    title="Este sitio cumple con los estándares del W3C, y esta imagen es supernoventera">
+                    title="Este sitio cumple con los estándares del W3C
+                    y esta imagen es super noventera">
             </div>
         </footer>
     </body>

@@ -7,41 +7,42 @@
         <meta name="author" content="Jorge Martínez">
 		<meta name="keywords" content="BIOS, UEFI, ROM, curiosidades">
 		<meta name="description" content="Curiosidades sobre BIOS">
-        <link rel="stylesheet" href="styles.css?v=1.2"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
+        <link rel="stylesheet" href="styles.css?v=1.5"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
         <link rel="icon" href="images/star.ico" type="image/x-icon">
         <link rel="icon" type="image/png" sizes="32x32" href="images/star.ico">
         <link rel="icon" type="image/png" sizes="16x16" href="images/star.ico">
     </head>
 
     <body>
+        <a href="#main" class="skip-link">Saltar al contenido</a>
         <header>
-            <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
                 <picture>
                     <source srcset="images/star.png" type="image/png">
                     <img src="images/star.png" alt="Logo Energy Star" width="80">
                 </picture>
             </a>
-            <span id="titulo">Curiosidades</span>
+            <h1 id="titulo">Curiosidades</h1>
         </header>
             <nav class="nav1">
                 <a href="index.html" class="btn">Inicio</a>
                 <a href="1_hist.html" class="btn">Historia</a>
                 <a href="2_evo.html" class="btn">Evolución</a>
-                <a href="3_curio.html" class="active btn">CURIOSIDADES</a>
+                <a href="3_curio.html" class="active btn" aria-current="page">CURIOSIDADES</a>
                 <a href="4_comp.html" class="btn">Comparativa</a>
                 <a href="5_sus.html" class="btn">Suscripción</a>
         </nav>
 
         <aside class="aside1">
-            <h4>Recursos</h4>
+            <h2>Recursos</h2>
             <ul>
-                <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer">Wikipedia: BIOS</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener noreferrer">Wikipedia: UEFI (EN)</a></li>
-                <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer">UEFI Forum</a></li>
+                <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: BIOS</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: UEFI (EN)</a></li>
+                <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">UEFI Forum</a></li>
             </ul>
         </aside>
         
-        <main class="main">
+        <main id="main" class="main">
             <p>El BIOS ha dado lugar a pequeñas anécdotas técnicas y culturales: por ejemplo, los característicos “beeps” del POST (Power-On Self Test) que indican errores de hardware son interpretados por técnicos desde hace décadas; el patrón de beeps varía entre fabricantes y se ha convertido en una especie de lenguaje técnico. Otra curiosidad es la existencia de “easter eggs” en firmware antiguos —mensajes, firmas de desarrolladores o pequeñas pantallas ocultas— que los propios programadores incrustaban dentro de las ROMs en tiempos en que el firmware era más cerrado y pequeño. También es interesante cómo una pila diminuta (la pila CMOS) ha marcado la diferencia: su agotamiento puede borrar la configuración del BIOS y provocar fallos aparentemente misteriosos, algo que ha sido fuente de muchos tickets de soporte técnico y trucos de recuperación.</p>
 
             <p>Además, el BIOS fue (y es) un objetivo interesante para investigadores de seguridad: desde vulnerabilidades que permitían persistencia tras reinstalar el sistema operativo hasta la necesidad de diseños redundantes como el “dual BIOS” en placas para proteger frente a actualizaciones fallidas. También es llamativo cómo un componente de tan bajo nivel —el firmware— ha pasado de ser totalmente invisible para el usuario a disponer de interfaces gráficas y opciones de seguridad que influyen directamente en la protección y arranque de los equipos modernos. La inclusión de imágenes de fondo en algunos modelos e incluso de conectividad a internet casi harían parecer a este sistema como un Sistema Operativo con derecho propio.</p>
@@ -51,15 +52,20 @@
         <footer>
             <div class="foot-name">
                 <p>©2026 Jorge Martínez</p>
+                <a href="https://github.com/Wafo00/CSS-Project-2025/tree/main" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
+                    <span aria-hidden="true">🔗</span>
+                    Proyecto en GitHub
+                </a> <!-- Icono de enlace decorativo; añado aria-hidden para ocultarlo a lectores de pantalla -->
             </div>
-            
+
             <div class="foot-icons"> <!-- he añadido este bonito icono porque sigo anclado en los 90 -->
                 <img
                     src="images/vcss.png"
                     alt="CSS válido según el W3C"
                     width="88"
                     height="31"
-                    title="Este sitio cumple con los estándares del W3C, y esta imagen es supernoventera">
+                    title="Este sitio cumple con los estándares del W3C
+                    y esta imagen es super noventera">
             </div>
         </footer>
     </body>

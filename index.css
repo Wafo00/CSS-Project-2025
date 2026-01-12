@@ -1,0 +1,19 @@
+/* Anotaciones generales en README.md (GitHub) y en Readme.txt (En el directorio local de este proyecto) */
+
+main img { /* Para evitar el desbordamiento en móviles */
+    max-width: 100%;
+    height: auto; /* Se escala la imagen sin romper el mapa de index.html */
+}
+
+/* Con esto oculto de la vista, pero no de los lectores de pantalla, el contenido esta clase, que estoy aplicando al mapa de imagen de index.html */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%); /* inset (50% 50% 50% 50%); un rectángulo al que se le recorta un 50% por cada uno de esos lados. Resultado: 0px, oculto visualmente, pero no para lectores */
+    white-space: nowrap;
+    border: 0;
+}

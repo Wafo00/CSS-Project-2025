@@ -1,0 +1,26 @@
+/* Anotaciones generales en README.md (GitHub) y en Readme.txt (En el directorio local de este proyecto) */
+
+:root {
+    --bg-page: #e9e9e9;
+    --text-main: #1e293b;
+    --bg-nav: #182d55;
+    --text-nav: #FFFFFF;
+    --bg-nav-hover: #1e40af;
+    --focus-inset-light: rgba(255, 255, 255, 0.4); /* Para un box-shadow de foco en pantallas pequeñas, usado más adelante */
+    --focus-color: #95c3ff;
+    --focus-ring-light: rgba(30, 64, 175, 0.35);
+    --focus-ring-dark: rgba(147, 197, 253, 0.45);
+}
+
+.privacy {
+    display: block; /* Evita que herede el display grid del body */
+    text-align: justify;
+    max-width: 800px;
+}
+
+@media (prefers-color-scheme: dark) { /* Ajuste para enlaces en modo oscuro */
+    :root {
+    --bg-page: #070b14;
+    --text-main: #f8fafc;
+    }
+}

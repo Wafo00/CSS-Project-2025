@@ -1,0 +1,278 @@
+/* Anotaciones generales en README.md (GitHub) y en Readme.txt (En el directorio local de este proyecto) */
+
+/* Estilos para formularios */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1em;
+    border: 1px solid #999;
+    border-radius: 6px;
+}
+
+/* Campos obligatorios inválidos */
+input:required:invalid,
+select:required:invalid,
+textarea:required:invalid {
+    border-color: #dc2626;
+}
+
+/* Campos obligatorios válidos */
+input:required:valid,
+select:required:valid,
+textarea:required:valid {
+    border-color: #16a34a;
+}
+
+/* Del focus se encarga el propio navegador, pero lo defino para cumplir con la rúbrica */
+
+/* Transiciones para los campos. Con esto logro que se perciba mejor el cambio visual */
+input,
+select,
+textarea {
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.3s ease,
+        background-color 0.2s ease;
+}
+
+/* Foco, general */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--focus-color);
+
+    /* Antes, aquí aplicaba un cambio de fondo pero, por especificidad, :focus-visible lo sobreescribía más adelante */
+}
+
+/* Regla específica de select al hacer foco también con ratón */
+select:focus {
+    box-shadow: 0 0 0 4px var(--focus-ring-light);
+}
+
+/* Regla específica para navegación con teclado */
+input:focus-visible,
+textarea:focus-visible {
+    box-shadow: 0 0 0 4px var(--focus-ring-light);
+}
+
+/* Regla específica de select para navegación con teclado. Al parecer, select se renderiza de forma distinta */
+select:focus-visible {
+    box-shadow: 0 0 0 4px var(--focus-ring-light);
+
+    /* Previamente aquí había otra regla para el fondo, y funcionaba bien, pero al llegar al foco mediante teclado y desplegar el menú mediante el ratón, el fondo cambiaba a blanco. Esto era casi imperceptible en modo claro, aunque no era el comportamiento deseado, pero en modo oscuro resultaba ilegible */
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 6px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    margin-right: 10px;
+}
+
+.consent-text {
+    font-weight: normal;
+}
+
+@media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 745). Este breakpoint está pensado para mejorar la experiencia táctil; complementa al anterior */
+
+    /* Layout */
+    body {
+        display: flex; /* Con esto me aseguro de que en pantalla o ventana pequeñas, deje de usarse grid */
+        flex-direction: column; 
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto;
+        gap: 15px;
+        width: 100%; /* Me aseguro de que en pantalla pequeña no haga falta hacer zoom "hacia atrás" innecesario */
+    }
+
+    .nav1 {
+        /* flex-direction: row;
+        flex-wrap: nowrap; */
+        flex-flow: row nowrap; /* Fuerzo a que los botones estén en una sola fila en caso de que se cumpla el media query */
+        justify-content: flex-start; /* Previamente lo tenía como "center", y se me cortaban "botones" hacia la izquierda en móviles */
+        align-items: center;
+        gap: 10px;
+
+        /* overflow-x: auto;
+        overflow-y: hidden; */
+
+        overflow: auto hidden;
+        width: 100%;
+        padding: 5px 10px; /* Un poco de padding para que no se pegue el contenido a los bordes */
+        scrollbar-width: thin; /* Si los botones no caben, saldrá un bonito scroll */
+    }
+
+    .nav1 a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .nav1 a.active { /* Resalto el botón activo aún más en móviles, pero no en pantallas grandes */
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4) inset; /* comencé usando outline pero, al no formar parte del box model, no se adaptaba bien al tamaño del botón */
+    }
+    
+    .aside1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .aside1 ul {
+        display: flex;
+        
+        /* flex-direction: row;
+        flex-wrap: nowrap; */
+
+        flex-flow: nowrap;
+        gap: 12px;
+        overflow-x: auto;
+        justify-content: center;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .aside1 li {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .foot-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    }
+
+    .foot-icons {
+        justify-content: center;
+    }
+
+    /* Mapa de imagenes de index desactivado en pantallas pequeñas */
+    main > img[usemap] {
+        display: none;
+    }
+
+    /* Formulario */
+    form {
+        padding: 0 5px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+    --bg-page: #070b14;
+    --text-main: #f8fafc;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+        background-color: #0f172a; /* Azul muy oscuro */
+        color: #f8fafc; /* Texto claro */
+        border-color: #334155;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #94a3b8; /* Placeholder suave */
+        opacity: 1; /* Importante en Firefox */
+    }
+
+    input:required:invalid,
+    select:required:invalid,
+    textarea:required:invalid {
+        border-color: #f87171;
+    }
+
+    input:required:valid,
+    select:required:valid,
+    textarea:required:valid {
+        border-color: #22c55e;
+    }
+
+     /* Focus modo oscuro */
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: var(--focus-color);
+
+        /* Aquí tuve el mismo problema que en el modo claro cuando aplicaba un cambio de fondo */
+    }
+
+    /* Regla específica para navegación con ratón en modo oscuro */
+    select:focus {
+        box-shadow: 0 0 0 4px var(--focus-ring-dark);
+    }
+
+    /* Regla específica para navegación con teclado en modo oscuro */
+    input:focus-visible,
+    textarea:focus-visible {
+        box-shadow: 0 0 0 4px var(--focus-ring-dark);
+    }
+ 
+    select:focus-visible {
+        box-shadow: 0 0 0 4px var(--focus-ring-dark);
+    }
+
+}
+
+label {
+    font-weight: bold;
+    display: inline-block;  
+    margin-bottom: 4px;
+}
+
+fieldset {
+    border: 1px solid #999;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+fieldset label { /* Esto mejora la pulsación en p. táctiles */
+    display: block;
+    margin-bottom: 6px;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 6px;
+}
+
+ /* Detección de dispositivos táctiles puros. Coarse indica la precisión, dedo en este caso. También evito scroll accidental con entrada táctil */
+@media (hover: none) and (pointer: coarse) {
+    body {
+        overflow-y: auto;
+    }
+}

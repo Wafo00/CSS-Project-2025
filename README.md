@@ -12,3 +12,5 @@ Estoy usando por primera vez Stylelint (después del validador de W3c) para vali
 En los media queries también me decanto por la compatibilidad, no usando la sintaxis moderna de rango que aconseja Stylelint. No creo que nadie vaya a abrir esto en Netscape, pero me parece una buena práctica, en este momento.
 
 Se adjunta el archivo de configuración de Stylelint que he usado.
+
+Se ha usado un pequeño script de JS para la validación del campo "email" en el formulario, y otro para el autocentrado de los botones de navegación en el modo pantalla estrecha.

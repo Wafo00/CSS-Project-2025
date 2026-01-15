@@ -89,7 +89,6 @@ input[type="reset"] {
 
 @media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 745). Este breakpoint está pensado para mejorar la experiencia táctil; complementa al anterior */
 
-    /* Layout */
     body {
         display: flex; /* Con esto me aseguro de que en pantalla o ventana pequeñas, deje de usarse grid */
         flex-direction: column; 
@@ -160,11 +159,11 @@ input[type="reset"] {
     }
 
     .foot-name {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: left;
     }
 
     .foot-icons {
@@ -176,7 +175,7 @@ input[type="reset"] {
         display: none;
     }
 
-    /* Formulario */
+
     form {
         padding: 0 5px;
     }

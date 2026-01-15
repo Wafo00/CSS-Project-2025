@@ -10,6 +10,8 @@
     --focus-color: #95c3ff;
     --focus-ring-light: rgba(30, 64, 175, 0.35);
     --focus-ring-dark: rgba(147, 197, 253, 0.45);
+    --shadow-dark: rgba(158, 220, 255, 0.20);
+    --shadow-light: rgba(0, 0, 0, 0.20);
 }
 
 /* Evito sumar anchos al 100% especificado. Los tres selectores me aseguran que se aplica a toda la página y a los pseudoelementos */
@@ -69,7 +71,24 @@ a:active {
     }
 }
 
-/* Defino explícitamente todos los estados del enlace a GitHub del fotter (a partir de línea 283) para evitar que las reglas globales de enlaces (a:link, a:visited), especialmente en modo oscuro, lo sobrescriban en navegadores como Chrome */
+/* Defino explícitamente todos los estados del enlace a GitHub del fotter para evitar que las reglas globales de enlaces (a:link, a:visited), especialmente en modo oscuro, lo sobrescriban en navegadores como Chrome */
+
+.github-link {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background-color: var(--bg-nav);
+    color: var(--text-nav);
+    box-shadow: 4px 4px 8px var(--shadow-light);
+    text-decoration: none;
+    font-size: 0.85em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.github-link span { /* Para separar el icono del enlace */
+    margin-right: 4px; 
+}
+
 .github-link,
 .github-link:link,
 .github-link:visited,
@@ -104,7 +123,7 @@ main ul {
 
 body {
     display: grid;
-    grid-template-columns: 150px 1fr 210px;
+    grid-template-columns: 160px 1fr 210px;
     grid-template-rows: auto 1fr auto; 
     margin: 0;
     padding: 10px;
@@ -114,11 +133,8 @@ body {
     color: var(--text-main);
     transition: background-color 0.3s ease, color 0.3s ease;
     min-height: 100vh; /* Uso esto para evitar el efecto de "pequeño zoom por defecto" al entrar desde disp. móviles */
-
     align-content: start;
-    gap: 20px;
-    overflow: auto; /* Hará que los scrolls de ambos ejes aparezcan solo cuando sean necesarios */
-    
+    gap: 20px;    
 }
 
 header {
@@ -144,13 +160,13 @@ header {
     display: inline-flex; /* Por fuera, el comportamiento es en línea; internamente se organiza como un flexbox. Posteriores reglas ya se encargan de esto, pero prefiero dejarlo así por si más adelante añado contenido más complejo aquí dentro */
     align-items: center;
     justify-content: center;
-    padding: 10px 20px; /* Aumento del padding para mejorar la usabilidad en pantallas táctiles */
+    padding: 10px 15px; /* Aumento del padding para mejorar la usabilidad en pantallas táctiles y por estética */
     border-radius: 8px;
+    box-shadow: 4px 4px 8px var(--shadow-light);
     font-family: inherit;
     font-size: 0.95em;
     font-weight: bold;
     text-decoration: none;
-    border: 2px solid var(--bg-nav);
     background-color: var(--bg-nav);
     color: var(--text-nav);
     cursor: pointer;
@@ -199,6 +215,10 @@ header {
 main {
     grid-column: 2;
     grid-row: 2;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 4px 4px 8px var(--shadow-light);
 }
 
 main a { /* Mejora la pulsación en móviles */
@@ -207,11 +227,39 @@ main a { /* Mejora la pulsación en móviles */
     color: inherit; /* Llegar a esto para que no cambiara los colores me ha costado 2 horas */
 }
 
+footer {
+    grid-column: 1 / 4;
+    grid-row: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.foot-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.foot-icons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
 /* Ajuste para modo oscuro */
 @media (prefers-color-scheme: dark) { 
     :root {
     --bg-page: #070b14;
     --text-main: #f8fafc;
+    }
+
+    main {
+    background-color: #0f172a;
+    box-shadow: 4px 4px 8px var(--shadow-dark);
     }
 
     main a {
@@ -222,6 +270,10 @@ main a { /* Mejora la pulsación en móviles */
     main a:focus {
         color: #fbbf24;
     }
+
+    .btn {
+        box-shadow: 4px 4px 8px var(--shadow-dark);
+    }
 }
 
 .aside1 {
@@ -230,8 +282,8 @@ main a { /* Mejora la pulsación en móviles */
     padding: 15px;
     border-radius: 8px;
     background-color: var(--bg-nav);
-    color: var(--text-nav);
-    border: 2px solid var(--bg-nav);
+    color: var(--text-nav);    
+    box-shadow: 4px 4px 8px var(--shadow-light);
     align-self: start; 
     display: flex;
     flex-direction: column;
@@ -259,42 +311,15 @@ main a { /* Mejora la pulsación en móviles */
 .aside1 a:focus { color: #f87171; }
 .aside1 a:active { color: #4ade80; }
 
-footer {
-    grid-column: 1 / 4;
-    grid-row: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    font-size: 0.9em;
-}
+@media (prefers-color-scheme: dark) { 
+    .aside1 {
+    box-shadow: 4px 4px 8px var(--shadow-dark);
+    }
 
-.foot-name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-align: left;
-}
-
-.foot-icons {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
 
 .github-link {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 6px;
-    background-color: var(--bg-nav);
-    color: var(--text-nav);
-    text-decoration: none;
-    font-size: 0.85em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.github-link span { /* Para separar el icono del enlace */
-    margin-right: 4px; 
+    box-shadow: 4px 4px 8px var(--shadow-dark);
+    }
 }
 
 /* Defino colores específicos para el enlace de GitHub para que no herede colores globales en los estados hover y focus. Esto evita problemas de contraste */
@@ -351,12 +376,10 @@ footer {
 }
 
 @media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 745). Este breakpoint está pensado para mejorar la experiencia táctil; complementa al anterior */
-
     /* Layout */
     body {
         display: flex; /* Con esto me aseguro de que en pantalla o ventana pequeñas, deje de usarse grid */
         flex-direction: column; 
-
         gap: 15px;
         width: 100%; /* Me aseguro de que en pantalla pequeña no haga falta hacer zoom "hacia atrás" innecesario */
     }
@@ -423,11 +446,11 @@ footer {
     }
 
     .foot-name {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: left;
     }
 
     .foot-icons {

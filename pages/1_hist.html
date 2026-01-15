@@ -1,73 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Historia BIOS</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta name="author" content="Jorge Martínez">
-		<meta name="keywords" content="BIOS, UEFI, ROM, historia">
-		<meta name="description" content="Historia de BIOS">
-        <link rel="stylesheet" href="../styles/styles.css?v=2.1"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
-        <link rel="icon" href="/images/star.ico" type="image/x-icon">
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/star.ico">
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/star.ico">
-    </head>
 
-    <body>
-        <a href="#main" class="skip-link">Saltar al contenido</a>
-        <header>
-            <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
-                <picture>
-                    <source srcset="../images/star.png" type="image/png">
-                    <img src="../images/star.png" alt="Logo Energy Star" width="80">
-                </picture>
-            </a>
-            <h1 id="titulo">Historia de BIOS</h1>
-        </header>
-            <nav class="nav1">
-                <a href="../index.html" class="btn">Inicio</a>
-                <a href="1_hist.html" class="active btn" aria-current="page">HISTORIA</a>
-                <a href="2_evo.html" class="btn">Evolución</a>
-                <a href="3_curio.html" class="btn">Curiosidades</a>
-                <a href="4_comp.html" class="btn">Comparativa</a>
-                <a href="5_sus.html" class="btn">Suscripción</a>
-        </nav>
+<head>
+    <meta charset="UTF-8">
+    <title>Historia BIOS</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Jorge Martínez">
+    <meta name="keywords" content="BIOS, UEFI, ROM, historia">
+    <meta name="description" content="Historia de BIOS">
+    <link rel="stylesheet" href="../styles/styles.css?v=2.1">
+    <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
+    <link rel="icon" href="../images/star.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/star.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/star.ico">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Saltar al contenido</a>
+    <header>
+        <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer"
+            aria-label="Se abre en una pestaña nueva">
+            <picture>
+                <source srcset="../images/star.png" type="image/png">
+                <img src="../images/star.png" alt="Logo Energy Star" width="80">
+            </picture>
+        </a>
+        <h1 id="titulo">Historia de BIOS</h1>
+    </header>
+    <nav class="nav1">
+        <a href="../index.html" class="btn">Inicio</a>
+        <a href="1_hist.html" class="active btn" aria-current="page">HISTORIA</a>
+        <a href="2_evo.html" class="btn">Evolución</a>
+        <a href="3_curio.html" class="btn">Curiosidades</a>
+        <a href="4_comp.html" class="btn">Comparativa</a>
+        <a href="5_sus.html" class="btn">Suscripción</a>
+    </nav>
 
 
-        <aside class="aside1">
-            <h2>Recursos</h2>
-            <ul>
-                <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: BIOS</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: UEFI (EN)</a></li>
-                <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">UEFI Forum</a></li>
-            </ul>
-        </aside>
-       
-        <main id="main" class="main">
-            <p>El BIOS (Basic Input/Output System) nació como la pieza de firmware responsable de inicializar el hardware básico de los primeros ordenadores personales y ofrecer una interfaz mínima entre el sistema operativo y los dispositivos. En los PC compatibles con IBM de principios de los años 80, el BIOS proporcionó rutinas para detectar y poner en marcha procesador, memoria, teclado y unidades de disco, y guardaba su configuración en una pequeña memoria no volátil (CMOS) mantenida por una pila. Esa simplicidad y estandarización fue clave para que el ecosistema de hardware y software creciera rápidamente durante las décadas siguientes.</p>
+    <aside class="aside1">
+        <h2>Recursos</h2>
+        <ul>
+            <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer"
+                    aria-label="Se abre en una pestaña nueva">Wikipedia: BIOS</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank"
+                    rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: UEFI (EN)</a></li>
+            <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer"
+                    aria-label="Se abre en una pestaña nueva">UEFI Forum</a></li>
+        </ul>
+    </aside>
 
-            <p>Con el tiempo, el BIOS original fue modificado y clonado por distintos fabricantes (por ejemplo, AMI, Award, Phoenix) para añadir soportes específicos de placas y funcionalidades. Sin embargo, sus limitaciones —arquitectura en modo real, restricciones en el manejo de discos modernos y falta de un modelo de control más flexible— llevaron a la necesidad de un reemplazo moderno. Esa transición técnica y conceptual es la que dio lugar a soluciones más modernas, como UEFI, y a alternativas de firmware libre que buscan modelos más abiertos y modulares.</p>
-        </main>  
-        
-        <br><br><br>
-        <footer>
-            <div class="foot-name">
-                <p>©2026 Jorge Martínez</p>
-                <a href="https://github.com/Wafo00/CSS-Project-2025/tree/main" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
-                    <span aria-hidden="true">🔗</span>
-                    Proyecto en GitHub
-                </a> <!-- Icono de enlace decorativo; añado aria-hidden para ocultarlo a lectores de pantalla -->
-            </div>
+    <main id="main" class="main" tabindex="-1">
+        <!-- añado tabindex -1 para que el foco pueda ir aquí al usar el enlace de "saltar al contenido" -->
+        <p>El BIOS (Basic Input/Output System) nació como la pieza de firmware responsable de inicializar el hardware
+            básico de los primeros ordenadores personales y ofrecer una interfaz mínima entre el sistema operativo y los
+            dispositivos. En los PC compatibles con IBM de principios de los años 80, el BIOS proporcionó rutinas para
+            detectar y poner en marcha procesador, memoria, teclado y unidades de disco, y guardaba su configuración en
+            una pequeña memoria no volátil (CMOS) mantenida por una pila. Esa simplicidad y estandarización fue clave
+            para que el ecosistema de hardware y software creciera rápidamente durante las décadas siguientes.</p>
 
-            <div class="foot-icons"> <!-- he añadido este bonito icono porque sigo anclado en los 90 -->
-                <img
-                    src="../images/vcss.png"
-                    alt="CSS válido según el W3C"
-                    width="88"
-                    height="31"
-                    title="Este sitio cumple con los estándares del W3C
+        <p>Con el tiempo, el BIOS original fue modificado y clonado por distintos fabricantes (por ejemplo, AMI, Award,
+            Phoenix) para añadir soportes específicos de placas y funcionalidades. Sin embargo, sus limitaciones
+            —arquitectura en modo real, restricciones en el manejo de discos modernos y falta de un modelo de control
+            más flexible— llevaron a la necesidad de un reemplazo moderno. Esa transición técnica y conceptual es la que
+            dio lugar a soluciones más modernas, como UEFI, y a alternativas de firmware libre que buscan modelos más
+            abiertos y modulares.</p>
+    </main>
+
+    <br><br><br>
+    <footer>
+        <div class="foot-name">
+            <p>©2026 Jorge Martínez</p>
+            <a href="https://github.com/Wafo00/CSS-Project-2025/tree/main" class="github-link" target="_blank"
+                rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
+                <span aria-hidden="true">🔗</span>
+                Proyecto en GitHub
+            </a> <!-- Icono de enlace decorativo; añado aria-hidden para ocultarlo a lectores de pantalla -->
+        </div>
+
+        <div class="foot-icons"> <!-- he añadido este bonito icono porque sigo anclado en los 90 -->
+            <img src="../images/vcss.png" alt="CSS válido según el W3C" width="88" height="31" title="Este sitio cumple con los estándares del W3C
                     y esta imagen es super noventera">
-            </div>
-        </footer>
-    </body>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const activeLink = document.querySelector(".nav1 a.active");
+            if (activeLink) {
+                activeLink.scrollIntoView({
+                    behavior: "auto",
+                    inline: "center",
+                    block: "nearest"
+                });
+            }
+        });
+    </script>
+
+</body>
+
 </html>

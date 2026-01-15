@@ -18,9 +18,41 @@
     max-width: 800px;
 }
 
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 10px;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
 @media (prefers-color-scheme: dark) { /* Ajuste para enlaces en modo oscuro */
     :root {
-    --bg-page: #070b14;
-    --text-main: #f8fafc;
+        --bg-page: #070b14;
+        --text-main: #f8fafc;
     }
+
+    .privacy {
+        background-color: var(--bg-page);
+        color: var(--text-main);
+    }
+
+    a:link {
+        color: lightblue;
+    }
+    
+    a:visited {
+        color: violet;
+    }
+    
+    a:hover, a:focus {
+        color: orange;
+    }
+    
+    a:active {
+        color: green;
+    }
+
 }

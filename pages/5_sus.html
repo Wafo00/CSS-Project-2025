@@ -1,69 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Suscripción</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta name="author" content="Jorge Martínez">
-		<meta name="keywords" content="BIOS, UEFI, ROM, curiosidades, suscripción, newsletter">
-		<meta name="description" content="Suscripción a la newsletter sobre BIOS">
-        <link rel="stylesheet" href="../styles/styles.css?v=2.1"> <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
-        <link rel="stylesheet" href="../styles/forms.css?v=1.1">
-        <link rel="icon" href="../images/star.ico" type="image/x-icon">
-        <link rel="icon" type="image/png" sizes="32x32" href="../images/star.ico">
-        <link rel="icon" type="image/png" sizes="16x16" href="../images/star.ico">
-    </head>
 
-    <body>
-        <a href="#main" class="skip-link">Saltar al contenido</a>
-        <header>
-            <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
-                <picture>
-                    <source srcset="../images/star.png" type="image/png">
-                    <img src="../images/star.png" alt="Logo Energy Star" width="80">
-                </picture>
-            </a>
-            <h1 id="titulo">Suscripción</h1>
-        </header>
-            <nav class="nav1">
-                <a href="../index.html" class="btn">Inicio</a>
-                <a href="1_hist.html" class="btn">Historia</a>
-                <a href="2_evo.html" class="btn">Evolución</a>
-                <a href="3_curio.html" class="btn">Curiosidades</a>
-                <a href="4_comp.html" class="btn">Comparativa</a>
-                <a href="5_sus.html" class="active btn" aria-current="page">SUSCRIPCIÓN</a>
-        </nav>
+<head>
+    <meta charset="UTF-8">
+    <title>Suscripción</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Jorge Martínez">
+    <meta name="keywords" content="BIOS, UEFI, ROM, curiosidades, suscripción, newsletter">
+    <meta name="description" content="Suscripción a la newsletter sobre BIOS">
+    <link rel="stylesheet" href="../styles/styles.css?v=2.1">
+    <!--añado ?v=versión para forzar la recarga del CSS en caso de que el navegador móvil use caché. Útil para comprobar los cambios según los voy aplicando y subiendo a GitHub-->
+    <link rel="stylesheet" href="../styles/forms.css?v=1.1">
+    <link rel="icon" href="../images/star.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/star.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/star.ico">
+</head>
 
-        <aside class="aside1">
-            <h2>Recursos</h2>
-            <ul>
-                <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: BIOS</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: UEFI (EN)</a></li>
-                <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">UEFI Forum</a></li>
-            </ul>
-        </aside>
-        
-        <main id="main" class="main">
-            <p>Rellena este formulario para recibir noticias sobre el apasionante mundo de BIOS y UEFI.</p>
-        
-            <form action="#" method="post" enctype="application/x-www-form-urlencoded">
-                <label for="fname">Nombre *</label><br>
-                <input id="fname" name="fname" type="text" placeholder="ej: Ernesto Tomás" required><br><br>
+<body>
+    <a href="#main" class="skip-link">Saltar al contenido</a>
+    <header>
+        <a href="https://www.energystar.gov/" target="_blank" rel="noopener noreferrer"
+            aria-label="Se abre en una pestaña nueva">
+            <picture>
+                <source srcset="../images/star.png" type="image/png">
+                <img src="../images/star.png" alt="Logo Energy Star" width="80">
+            </picture>
+        </a>
+        <h1 id="titulo">Suscripción</h1>
+    </header>
+    <nav class="nav1">
+        <a href="../index.html" class="btn">Inicio</a>
+        <a href="1_hist.html" class="btn">Historia</a>
+        <a href="2_evo.html" class="btn">Evolución</a>
+        <a href="3_curio.html" class="btn">Curiosidades</a>
+        <a href="4_comp.html" class="btn">Comparativa</a>
+        <a href="5_sus.html" class="active btn" aria-current="page">SUSCRIPCIÓN</a>
+    </nav>
 
-                <label for="lname">Apellidos *</label><br>
-                <input id="lname" name="lname" type="text" placeholder="ej: Cétera" required><br><br>
+    <aside class="aside1">
+        <h2>Recursos</h2>
+        <ul>
+            <li><a href="https://es.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer"
+                    aria-label="Se abre en una pestaña nueva">Wikipedia: BIOS</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface" target="_blank"
+                    rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">Wikipedia: UEFI (EN)</a></li>
+            <li><a href="https://uefi.org" target="_blank" rel="noopener noreferrer"
+                    aria-label="Se abre en una pestaña nueva">UEFI Forum</a></li>
+        </ul>
+    </aside>
 
-                <label for="email">Correo electrónico *</label><br>
-                <input id="email" name="email" type="email" placeholder="ejemplo@ejemplo.com" required><br><br> <!-- La validación se está haciendo con html5, por lo que solo se va a fijar si hay algo a la izquierda y a la derecha de la @ -->
+    <main id="main" class="main" tabindex="-1">
+        <!-- añado tabindex -1 para que el foco pueda ir aquí al usar el enlace de "saltar al contenido" -->
+        <p>Rellena este formulario para recibir noticias sobre el apasionante mundo de BIOS y UEFI.</p>
 
-                <label for="emailConfirm">Confirmar correo electrónico *</label><br>
-                <input id="emailConfirm" name="emailConfirm" type="email" placeholder="(ambos deben coincidir)" required><br><br>             
+        <form action="#" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="fname">Nombre *</label><br>
+            <input id="fname" name="fname" type="text" placeholder="ej: Ernesto Tomás" required><br><br>
 
-                <label for="prefname">Nombre preferido</label><br>
-                <input id="prefname" name="prefname" type="text" placeholder="ej: Ernie"><br><br>
+            <label for="lname">Apellidos *</label><br>
+            <input id="lname" name="lname" type="text" placeholder="ej: Cétera" required><br><br>
 
-                <label for="region">Región</label><br>
-                <select id="region" name="region">
+            <label for="email">Correo electrónico *</label><br>
+            <input id="email" name="email" type="email" placeholder="ejemplo@ejemplo.com" required><br><br>
+            <!-- La validación se está haciendo con html5, por lo que solo se va a fijar si hay algo a la izquierda y a la derecha de la @ -->
+
+            <label for="emailConfirm">Confirmar correo electrónico *</label><br>
+            <input id="emailConfirm" name="emailConfirm" type="email" placeholder="(ambos deben coincidir)"
+                required><br><br>
+
+            <label for="prefname">Nombre preferido</label><br>
+            <input id="prefname" name="prefname" type="text" placeholder="ej: Ernie"><br><br>
+
+            <label for="region">Región</label><br>
+            <select id="region" name="region">
                 <option value="">Selecciona...</option>
                 <option>Europa</option>
                 <option>América del norte</option>
@@ -71,113 +80,120 @@
                 <option>África</option>
                 <option>Asia</option>
                 <option>Oceanía</option>
-                </select><br><br>
+            </select><br><br>
 
-                <label for="lang">Idioma preferido</label><br>
-                <select id="lang" name="lang">
-                    <option value="es">Español</option>
-                    <option value="ca">Català</option>
-                    <option value="en">English</option>
-                    <option value="pt">Português</option>
-                </select><br><br>
+            <label for="lang">Idioma preferido</label><br>
+            <select id="lang" name="lang">
+                <option value="es">Español</option>
+                <option value="ca">Català</option>
+                <option value="en">English</option>
+                <option value="pt">Português</option>
+            </select><br><br>
 
-                <label for="ageRange">Rango de edad</label><br>
-                <select id="ageRange" name="ageRange">
-                    <option value="">Prefiero no decirlo</option>
-                    <option value="18-24">18–24</option>
-                    <option value="25-34">25–34</option>
-                    <option value="35-44">35–44</option>
-                    <option value="45-65">45-65</option>
-                    <option value="+65">+65</option>
-                </select><br><br>
+            <label for="ageRange">Rango de edad</label><br>
+            <select id="ageRange" name="ageRange">
+                <option value="">Prefiero no decirlo</option>
+                <option value="18-24">18–24</option>
+                <option value="25-34">25–34</option>
+                <option value="35-44">35–44</option>
+                <option value="45-65">45-65</option>
+                <option value="+65">+65</option>
+            </select><br><br>
 
-                <label>Género (opcional)</label><br>
-                <select name="gender">
-                    <option value="">No especificar</option>
-                    <option>Femenino</option>
-                    <option>Masculino</option>
-                    <option>Prefiero otro término</option>
-                </select><br><br>
+            <label>Género (opcional)</label><br>
+            <select name="gender">
+                <option value="">No especificar</option>
+                <option>Femenino</option>
+                <option>Masculino</option>
+                <option>Prefiero otro término</option>
+            </select><br><br>
 
-                <fieldset>
-                    <legend>Temas de interés (si no marcas ninguno, te enviaremos todas nuestras newsletters)</legend>
-                    <input type="checkbox" name="topics" value="tecnologia"> Tecnología<br>
-                    <input type="checkbox" name="topics" value="noticias"> Noticias<br>
-                    <input type="checkbox" name="topics" value="ofertas"> Ofertas<br>
-                    <input type="checkbox" name="topics" value="eventos"> Eventos<br>
-                    <input type="checkbox" name="topics" value="tutoriales"> Tutoriales<br>
-                </fieldset><br>
+            <fieldset>
+                <legend>Temas de interés (si no marcas ninguno, te enviaremos todas nuestras newsletters)</legend>
+                <input type="checkbox" name="topics" value="tecnologia"> Tecnología<br>
+                <input type="checkbox" name="topics" value="noticias"> Noticias<br>
+                <input type="checkbox" name="topics" value="ofertas"> Ofertas<br>
+                <input type="checkbox" name="topics" value="eventos"> Eventos<br>
+                <input type="checkbox" name="topics" value="tutoriales"> Tutoriales<br>
+            </fieldset><br>
 
-                <label for="frequency">Frecuencia preferida</label><br>
-                <select id="frequency" name="frequency">
-                    <option value="week">Semanal</option>
-                    <option value="month">Mensual</option>
-                    <option value="occ">Ocasional (sólo novedades importantes)</option>
-                </select><br><br>
+            <label for="frequency">Frecuencia preferida</label><br>
+            <select id="frequency" name="frequency">
+                <option value="week">Semanal</option>
+                <option value="month">Mensual</option>
+                <option value="occ">Ocasional (sólo novedades importantes)</option>
+            </select><br><br>
 
-                <label>¿Quieres recibir también comunicaciones comerciales? *</label><br>
-                <input type="radio" name="marketing" value="yes" required> Sí<br>
-                <input type="radio" name="marketing" value="no" required> No<br><br>
+            <label>¿Quieres recibir también comunicaciones comerciales? *</label><br>
+            <input type="radio" name="marketing" value="yes" required> Sí<br>
+            <input type="radio" name="marketing" value="no" required> No<br><br>
 
-                <label for="comments">Comentarios (opcional)</label><br>
-                <textarea id="comments" name="comments" rows="5" cols="80" placeholder="Escribe tus comentarios aquí..."></textarea><br><br>
+            <label for="comments">Comentarios (opcional)</label><br>
+            <textarea id="comments" name="comments" rows="5" cols="80"
+                placeholder="Escribe tus comentarios aquí..."></textarea><br><br>
 
-                <label>
-                    <input id="consent" name="consent" type="checkbox" required>
-                    <span class="consent-text">
-                        He leído y acepto la <a href="priv_pol.html" target="_blank">Política de privacidad</a>
-                        y doy mi consentimiento para recibir la newsletter.
-                    </span>
-                    </label><br><br>
+            <label>
+                <input id="consent" name="consent" type="checkbox" required>
+                <span class="consent-text">
+                    He leído y acepto la <a href="priv_pol.html" target="_blank">Política de privacidad</a>
+                    y doy mi consentimiento para recibir la newsletter.
+                </span>
+            </label><br><br>
 
-                <input type="submit" value="Suscribirme" class="btn">
-                <input type="reset" value="Limpiar" class ="btn">
-            </form>
-            <p>* Campos obligatorios</p>
-        </main>
-  
-        <br><br><br>
-        <footer>
-            <div class="foot-name">
-                <p>©2026 Jorge Martínez</p>
-                <a href="https://github.com/Wafo00/CSS-Project-2025/tree/main" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
-                    <span aria-hidden="true">🔗</span>
-                    Proyecto en GitHub
-                </a> <!-- Icono de enlace decorativo; añado aria-hidden para ocultarlo a lectores de pantalla -->
-            </div>
+            <input type="submit" value="Suscribirme" class="btn">
+            <input type="reset" value="Limpiar" class="btn">
+        </form>
+        <p>* Campos obligatorios</p>
+    </main>
 
-            <div class="foot-icons"> <!-- he añadido este bonito icono porque sigo anclado en los 90 -->
-                <img
-                    src="../images/vcss.png"
-                    alt="CSS válido según el W3C"
-                    width="88"
-                    height="31"
-                    title="Este sitio cumple con los estándares del W3C
+    <br><br><br>
+    <footer>
+        <div class="foot-name">
+            <p>©2026 Jorge Martínez</p>
+            <a href="https://github.com/Wafo00/CSS-Project-2025/tree/main" class="github-link" target="_blank"
+                rel="noopener noreferrer" aria-label="Se abre en una pestaña nueva">
+                <span aria-hidden="true">🔗</span>
+                Proyecto en GitHub
+            </a> <!-- Icono de enlace decorativo; añado aria-hidden para ocultarlo a lectores de pantalla -->
+        </div>
+
+        <div class="foot-icons"> <!-- he añadido este bonito icono porque sigo anclado en los 90 -->
+            <img src="../images/vcss.png" alt="CSS válido según el W3C" width="88" height="31" title="Este sitio cumple con los estándares del W3C
                     y esta imagen es super noventera">
-            </div>
-        </footer>
+        </div>
+    </footer>
 
-        <script>
-            const email = document.getElementById('email');
-            const emailConfirm = document.getElementById('emailConfirm');
+    <script>
+        const email = document.getElementById('email');
+        const emailConfirm = document.getElementById('emailConfirm');
 
-            function validateEmails() {
-                if (emailConfirm.value === '') {
+        function validateEmails() {
+            if (emailConfirm.value === '') {
                 emailConfirm.setCustomValidity('');
                 return;
-                }
-
-                if (email.value !== emailConfirm.value) {
-                emailConfirm.setCustomValidity('Los correos electrónicos no coinciden');
-                } else {
-                emailConfirm.setCustomValidity('');
-                }
             }
 
-            email.addEventListener('input', validateEmails);
-            emailConfirm.addEventListener('input', validateEmails);
-        </script>
+            if (email.value !== emailConfirm.value) {
+                emailConfirm.setCustomValidity('Los correos electrónicos no coinciden');
+            } else {
+                emailConfirm.setCustomValidity('');
+            }
+        }
 
-    </body>
+        email.addEventListener('input', validateEmails);
+        emailConfirm.addEventListener('input', validateEmails);
+        document.addEventListener("DOMContentLoaded", () => {
+            const activeLink = document.querySelector(".nav1 a.active");
+            if (activeLink) {
+                activeLink.scrollIntoView({
+                    behavior: "auto",
+                    inline: "center",
+                    block: "nearest"
+                });
+            }
+        });
+    </script>
+
+</body>
 
 </html>

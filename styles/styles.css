@@ -12,6 +12,7 @@
     --focus-ring-dark: rgba(147, 197, 253, 0.45);
     --shadow-dark: rgba(158, 220, 255, 0.20);
     --shadow-light: rgba(0, 0, 0, 0.20);
+    --shadow-light-contrast: rgba(0, 0, 0, 0.35); /* Sombra más oscura para elementos con fondo claro, como los botones */
 }
 
 /* Evito sumar anchos al 100% especificado. Los tres selectores me aseguran que se aplica a toda la página y a los pseudoelementos */
@@ -79,7 +80,7 @@ a:active {
     border-radius: 6px;
     background-color: var(--bg-nav);
     color: var(--text-nav);
-    box-shadow: 4px 4px 8px var(--shadow-light);
+    box-shadow: 4px 6px 8px var(--shadow-light);
     text-decoration: none;
     font-size: 0.85em;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -162,7 +163,7 @@ header {
     justify-content: center;
     padding: 10px 15px; /* Aumento del padding para mejorar la usabilidad en pantallas táctiles y por estética */
     border-radius: 8px;
-    box-shadow: 4px 4px 8px var(--shadow-light);
+    box-shadow: 4px 6px 8px var(--shadow-light-contrast);
     font-family: inherit;
     font-size: 0.95em;
     font-weight: bold;
@@ -218,7 +219,7 @@ main {
     background-color: #ffffff;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 4px 4px 8px var(--shadow-light);
+    box-shadow: 4px 6px 8px var(--shadow-light);
 }
 
 main a { /* Mejora la pulsación en móviles */
@@ -259,7 +260,7 @@ footer {
 
     main {
     background-color: #0f172a;
-    box-shadow: 4px 4px 8px var(--shadow-dark);
+    box-shadow: 4px 6px 8px var(--shadow-dark);
     }
 
     main a {
@@ -272,7 +273,7 @@ footer {
     }
 
     .btn {
-        box-shadow: 4px 4px 8px var(--shadow-dark);
+        box-shadow: 4px 6px 8px var(--shadow-dark);
     }
 }
 
@@ -283,7 +284,7 @@ footer {
     border-radius: 8px;
     background-color: var(--bg-nav);
     color: var(--text-nav);    
-    box-shadow: 4px 4px 8px var(--shadow-light);
+    box-shadow: 4px 6px 8px var(--shadow-light-contrast);
     align-self: start; 
     display: flex;
     flex-direction: column;
@@ -313,12 +314,12 @@ footer {
 
 @media (prefers-color-scheme: dark) { 
     .aside1 {
-    box-shadow: 4px 4px 8px var(--shadow-dark);
+    box-shadow: 4px 6px 8px var(--shadow-dark);
     }
 
 
 .github-link {
-    box-shadow: 4px 4px 8px var(--shadow-dark);
+    box-shadow: 4px 6px 8px var(--shadow-dark);
     }
 }
 
@@ -375,8 +376,7 @@ footer {
     }
 }
 
-@media (max-width: 900px) { /* Esto funciona con pantallas pequeñas y ventanas pequeñas, pero no al girar el móvil, por ejemplo, y ponerlo en modo landscape. Se soluciona más abajo (línea 745). Este breakpoint está pensado para mejorar la experiencia táctil; complementa al anterior */
-    /* Layout */
+@media (max-width: 900px) { /* Esto funciona con pantallas y ventanas pequeñas */
     body {
         display: flex; /* Con esto me aseguro de que en pantalla o ventana pequeñas, deje de usarse grid */
         flex-direction: column; 
@@ -396,15 +396,17 @@ footer {
         justify-content: flex-start;
         align-items: center;
         gap: 10px;
-        overflow: auto hidden;
+        overflow-x: auto;
         width: 100%;
         padding: 5px 10px;
         scrollbar-width: thin; /* Si los botones no caben, saldrá un bonito scroll */
+        scroll-snap-type: x mandatory; /* Para que los botones "encajen" al hacer scroll en móviles */
     }
     
     .nav1 a {
         flex: 0 0 auto;
         white-space: nowrap;
+        scroll-snap-align: center;
     }
 
     .nav1 a.active { /* Resalto el botón activo aún más en móviles, pero no en pantallas grandes */
@@ -415,23 +417,17 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
-        max-width: 100%;
+        width: 50%;
+        min-width: 200px;
         margin: 0 auto;
     }
 
     .aside1 ul {
         display: flex;
-        
-        /* flex-direction: row;
-        flex-wrap: nowrap; */
-
-        flex-flow: nowrap;
-        gap: 12px;
-        overflow-x: auto;
-        justify-content: center;
-        width: 100%;
-        padding: 5px 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        overflow-x: visible; /* en el mimprobable caso en que el contenido no cupiera, sobresaldrá, sin barra de scroll */
     }
 
     .aside1 li {

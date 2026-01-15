@@ -89,7 +89,7 @@
     font-size: 0.9em;
 }
 
-@media (max-width: 1150px) { /* Esto está especialmente pensado para la página de la tabla, en la qe el breakpoint de 900 (más abajo) hacía que desapareciera el aside y hubiera que hacer scroll. De esta forma se aplica el modo "pantalla estrecha" antes al reducir el tamaño de la ventana en escritorio */
+@media (max-width: 1200px) { /* Este breakpoint está especialmente pensado para la página de la tabla, en la qe el breakpoint de 900 común hacía que desapareciera el aside y hubiera que hacer scroll. De esta forma se aplica el modo "pantalla estrecha" antes al reducir el tamaño de la ventana en escritorio */
     body {
         display: flex;
         flex-direction: column;
@@ -124,23 +124,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
-        max-width: 100%;
+        width: 200px;
         margin: 0 auto;
     }
     
-    .aside1 ul {
+     .aside1 ul {
         display: flex;
-        
-        /* flex-direction: row;
-        flex-wrap: nowrap; */
-
-        flex-flow: nowrap;
-        gap: 12px;
-        overflow-x: auto;
-        justify-content: center;
-        width: 100%;
-        padding: 5px 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        overflow-x: visible; /* en el mimprobable caso en que el contenido no cupiera, sobresaldrá, sin barra de scroll */
     }
 
     .aside1 li {
